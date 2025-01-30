@@ -6,15 +6,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class BddConnectionQuito {
+public class BddConnectionGuayaquil {
 
     private static Connection conn = null;
 
-    private BddConnectionQuito() {
+    private BddConnectionGuayaquil() {
         
         String servidor = "localhost";
         String puerto = "1433"; 
-        String database = "sucursalQuito";
+        String database = "sucursalGuayaquil";
         String usuario = "sa"; 
         String password = "P@ssw0rd"; 
         
@@ -31,7 +31,7 @@ public class BddConnectionQuito {
 
     public static Connection getConexion() {
         if (conn == null) {
-            new BddConnectionQuito();
+            new BddConnectionGuayaquil();
         }
         return conn;
     }
