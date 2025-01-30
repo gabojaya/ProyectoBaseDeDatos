@@ -79,7 +79,7 @@ public class ClienteQuitoDAO {
         boolean insertado = false;
 
         // SQL para insertar en la vista VistaCliente
-        String _SQL_INSERT = "INSERT INTO [CASA].sucursalQuito.dbo.VistaCliente (cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?)";
+        String _SQL_INSERT = "INSERT INTO [ACERDERONNY].sucursalQuito.dbo.VistaCliente (cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?)";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = null;
