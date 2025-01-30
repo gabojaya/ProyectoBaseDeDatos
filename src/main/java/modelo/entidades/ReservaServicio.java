@@ -2,22 +2,22 @@ package modelo.entidades;
 
 import java.io.Serializable;
 
-public class ReservaMascota implements Serializable{
-
+public class ReservaServicio implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 	
-	public ReservaMascota() {
+	public ReservaServicio() {
 		
 	}
-	
+
 	private int idReserva;
-	private int idMascota;
+	private int idServicio;
 	private int idSucursal;
 
-	public ReservaMascota(int idReserva, int idMascota, int idSucursal) {
+	public ReservaServicio(int idReserva, int idServicio, int idSucursal) {
 		super();
 		this.idReserva = idReserva;
-		this.idMascota = idMascota;
+		this.idServicio = idServicio;
 		this.idSucursal = idSucursal;
 	}
 
@@ -29,12 +29,12 @@ public class ReservaMascota implements Serializable{
 		this.idReserva = idReserva;
 	}
 
-	public int getIdMascota() {
-		return idMascota;
+	public int getIdServicio() {
+		return idServicio;
 	}
 
-	public void setIdMascota(int idMascota) {
-		this.idMascota = idMascota;
+	public void setIdServicio(int idServicio) {
+		this.idServicio = idServicio;
 	}
 
 	public int getIdSucursal() {
@@ -44,5 +44,6 @@ public class ReservaMascota implements Serializable{
 	public void setIdSucursal(int idSucursal) {
 		this.idSucursal = idSucursal;
 	}
+	
 	
 }
