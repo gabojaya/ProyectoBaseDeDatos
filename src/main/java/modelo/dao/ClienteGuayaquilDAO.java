@@ -19,7 +19,7 @@ public class ClienteGuayaquilDAO {
         List<Cliente> clientesG = new ArrayList<>();
 
         // Consulta SQL para obtener los clientes desde la base de datos remota
-        String _SQL_GET_ALL = "SELECT idCliente, cedula, nombre, telefono, email, idSucursal FROM [CASA].sucursalGuayaquil.dbo.ClienteGuayaquil";
+        String _SQL_GET_ALL = "SELECT idCliente, cedula, nombre, telefono, email, idSucursal FROM [LUZUJ\\MSSQLSERVER1].sucursalGuayaquil.dbo.ClienteGuayaquil";
 
         Connection conn = BddConnectionGuayaquil.getConexion();
         PreparedStatement pstmt = conn.prepareStatement(_SQL_GET_ALL);
@@ -49,7 +49,7 @@ public class ClienteGuayaquilDAO {
     public boolean insertClienteGuayaquil(Cliente cliente) throws SQLException {
         boolean insertado = false;
 
-        String _SQL_INSERT = "INSERT INTO [CASA].sucursalGuayaquil.dbo.ClienteGuayaquil (idCliente, cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?, ?)";
+        String _SQL_INSERT = "INSERT INTO [LUZUJ\\MSSQLSERVER1].sucursalGuayaquil.dbo.ClienteGuayaquil (idCliente, cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?, ?)";
 
         Connection conn = BddConnectionGuayaquil.getConexion();
         PreparedStatement pstmt = null;
