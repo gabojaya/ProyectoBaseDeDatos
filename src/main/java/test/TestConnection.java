@@ -4,7 +4,8 @@ package test;
 import java.sql.SQLException;
 import java.util.List;
 
-import modelo.dao.ClienteDAO;
+import modelo.dao.ClienteQuitoDAO;
+import modelo.dao.ClienteGuayaquilDAO;
 import modelo.entidades.Cliente;
 
 public class TestConnection {
@@ -42,7 +43,7 @@ public class TestConnection {
 //			BddConnectionQuito.cerrar();
 //		}
 
-		ClienteDAO clienteGuayaquilDAO = new ClienteDAO();
+		ClienteGuayaquilDAO clienteGuayaquilDAO = new ClienteGuayaquilDAO();
 
 		try {
             List<Cliente> clientes = clienteGuayaquilDAO.getClientesGuayaquil();
@@ -60,20 +61,60 @@ public class TestConnection {
         }
 		
 		
-		ClienteDAO clienteG = new ClienteDAO();
+//		ClienteDAO clienteG = new ClienteDAO();
+//
+//		Cliente nuevoCliente = new Cliente(11, "1234567890", "Pedro López", "0987654321", "pedro@example.com", "Guayaquil");
+//
+//        try {
+//            boolean insertado = clienteG.insertClienteGuayaquil(nuevoCliente);
+//            if (insertado) {
+//                System.out.println("Cliente insertado correctamente.");
+//            } else {
+//                System.out.println("Error al insertar el cliente.");
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+		
+		ClienteQuitoDAO clienteQDAO = new ClienteQuitoDAO();
 
-		Cliente nuevoCliente = new Cliente(11, "1234567890", "Pedro López", "0987654321", "pedro@example.com", "Guayaquil");
-
-        try {
-            boolean insertado = clienteG.insertClienteGuayaquil(nuevoCliente);
-            if (insertado) {
-                System.out.println("Cliente insertado correctamente.");
+		try {
+            List<Cliente> clientesQuito = clienteQDAO.getClientesQuito();
+            if (!clientesQuito.isEmpty()) {
+                System.out.println("Clientes de Guayaquil:");
+                for (Cliente cliente : clientesQuito) {
+                    System.out.println(cliente.getIdCliente() + " - " + cliente.getCedula() + " - " + cliente.getNombre() +
+                            " - " + cliente.getTelefono() + " - " + cliente.getEmail() + " - " + cliente.getIdSucursal());
+                }
             } else {
-                System.out.println("Error al insertar el cliente.");
+                System.out.println("No se encontraron clientes.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+		
+		
+		Cliente cliente = new Cliente();
+		cliente.setCedula("1712345678");
+		cliente.setNombre("Johan Baños");
+		cliente.setTelefono("0998765432");
+		cliente.setEmail("johan@example.com");
+		cliente.setIdSucursal("Quito");  // O "Guayaquil" según corresponda
+
+		ClienteQuitoDAO clienteDAO = new ClienteQuitoDAO();
+		try {
+		    boolean insertado = clienteDAO.insertClienteDistribuido(cliente);
+		    if (insertado) {
+		        System.out.println("Cliente insertado correctamente.");
+		    } else {
+		        System.out.println("Error al insertar el cliente.");
+		    }
+		} catch (SQLException e) {
+		    // Si hay un error, se imprime el mensaje de la excepción
+		    System.out.println("Error en la base de datos: " + e.getMessage());
+		    e.printStackTrace();
+		}
+		
 		
 		
 	}

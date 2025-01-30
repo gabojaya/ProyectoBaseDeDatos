@@ -10,8 +10,8 @@ import java.util.List;
 import modelo.bdd.BddConnectionGuayaquil;
 import modelo.entidades.Cliente;
 
-public class ClienteDAO {
-	public ClienteDAO() {
+public class ClienteGuayaquilDAO {
+	public ClienteGuayaquilDAO() {
 
 	}
 	
@@ -75,6 +75,34 @@ public class ClienteDAO {
         return insertado;
     }
     
+    public boolean insertClienteDistribuido(Cliente cliente) throws SQLException {
+        boolean insertado = false;
+
+        // SQL para insertar en la vista VistaCliente
+        String _SQL_INSERT = "INSERT INTO VistaCliente (cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?)";
+
+        Connection conn = BddConnectionGuayaquil.getConexion();
+        PreparedStatement pstmt = null;
+
+        try {
+            pstmt = conn.prepareStatement(_SQL_INSERT);
+            pstmt.setString(1, cliente.getCedula());
+            pstmt.setString(2, cliente.getNombre());
+            pstmt.setString(3, cliente.getTelefono());
+            pstmt.setString(4, cliente.getEmail());
+            pstmt.setString(5, cliente.getIdSucursal());
+
+            int filasAfectadas = pstmt.executeUpdate();
+            insertado = (filasAfectadas > 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BddConnectionGuayaquil.cerrar(pstmt);
+            BddConnectionGuayaquil.cerrar();
+        }
+
+        return insertado;
+    }
     
 	
 	
