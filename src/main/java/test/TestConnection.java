@@ -99,9 +99,9 @@ public class TestConnection {
 		cliente.setNombre("Johan Baños");
 		cliente.setTelefono("0998765432");
 		cliente.setEmail("johan@example.com");
-		cliente.setIdSucursal("Quito");  // O "Guayaquil" según corresponda
+		cliente.setIdSucursal("Guayaquil");  // O "Guayaquil" según corresponda
 
-		ClienteQuitoDAO clienteDAO = new ClienteQuitoDAO();
+		ClienteGuayaquilDAO clienteDAO = new ClienteGuayaquilDAO();
 		try {
 		    boolean insertado = clienteDAO.insertClienteDistribuido(cliente);
 		    if (insertado) {

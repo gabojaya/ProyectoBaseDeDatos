@@ -94,27 +94,27 @@ public class TestConnection2 {
         }
 		
 		
-		Cliente cliente = new Cliente();
-		cliente.setCedula("1712345678");
-		cliente.setNombre("Johan Baños");
-		cliente.setTelefono("0998765432");
-		cliente.setEmail("johan@example.com");
-		cliente.setIdSucursal("Quito");  // O "Guayaquil" según corresponda
-
-		ClienteQuitoDAO clienteDAO = new ClienteQuitoDAO();
-		try {
-		    boolean insertado = clienteDAO.insertClienteDistribuido(cliente);
-		    if (insertado) {
-		        System.out.println("Cliente insertado correctamente.");
-		    } else {
-		        System.out.println("Error al insertar el cliente.");
-		    }
-		} catch (SQLException e) {
-		    // Si hay un error, se imprime el mensaje de la excepción
-		    System.out.println("Error en la base de datos: " + e.getMessage());
-		    e.printStackTrace();
-		}
-		
+//		Cliente cliente = new Cliente();
+//		cliente.setCedula("1712345678");
+//		cliente.setNombre("Johan Baños");
+//		cliente.setTelefono("0998765432");
+//		cliente.setEmail("johan@example.com");
+//		cliente.setIdSucursal("Quito");  // O "Guayaquil" según corresponda
+//
+//		ClienteQuitoDAO clienteDAO = new ClienteQuitoDAO();
+//		try {
+//		    boolean insertado = clienteDAO.insertClienteDistribuido(cliente);
+//		    if (insertado) {
+//		        System.out.println("Cliente insertado correctamente.");
+//		    } else {
+//		        System.out.println("Error al insertar el cliente.");
+//		    }
+//		} catch (SQLException e) {
+//		    // Si hay un error, se imprime el mensaje de la excepción
+//		    System.out.println("Error en la base de datos: " + e.getMessage());
+//		    e.printStackTrace();
+//		}
+//		
 		
 		
 	}

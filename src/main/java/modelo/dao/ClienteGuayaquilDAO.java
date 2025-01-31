@@ -79,10 +79,11 @@ public class ClienteGuayaquilDAO {
         boolean insertado = false;
 
         // SQL para insertar en la vista VistaCliente
-        String _SQL_INSERT = "INSERT INTO VistaCliente (cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?)";
+        String _SQL_INSERT = "INSERT INTO [LUZUJ\\MSSQLSERVER1].[sucursalGuayaquil].[dbo].[VistaCliente] (cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?)";
 
         Connection conn = BddConnectionGuayaquil.getConexion();
         PreparedStatement pstmt = null;
+        
 
         try {
             pstmt = conn.prepareStatement(_SQL_INSERT);
