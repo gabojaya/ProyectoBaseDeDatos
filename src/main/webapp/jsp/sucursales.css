@@ -1,0 +1,48 @@
+body {
+    background: #00264d;
+    font-family: 'Roboto', sans-serif;
+}
+
+body h1 {
+    text-align: center;
+    margin-bottom: 200px;
+    margin-top: 100px;
+    font-size: 2.5em; /* Tamaño de fuente para el encabezado */
+    color: white;
+}
+
+.contenedor {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    width: 60%; /* Reduce el ancho para centrar mejor los botones */
+    margin: auto;
+    padding: 20px;
+}
+
+.contenedor > div {
+    background: #f1f1f1;
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center; /* Centrar contenido verticalmente */
+    justify-content: center; /* Centrar contenido horizontalmente */
+    height: 150px; /* Altura de los botones */
+}
+
+.contenedor > div button {
+    border: none;
+    font-weight: bold;
+    font-size: 1.8em; /* Aumenta el tamaño del texto */
+    width: 100%;
+    height: 100%;
+    background: transparent; /* Fondo transparente dentro del contenedor */
+    cursor: pointer;
+    color: black;
+}
+
+.contenedor > div:hover {
+    transform: scale(1.05); /* Efecto hover */
+    transition: transform 0.3s ease;
+}

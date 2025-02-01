@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucursales</title>
+    <link rel="stylesheet" href="sucursales.css">
+</head>
+<body>
+    <h1>¡Bienvenido de nuevo!</h1>
+    <div class="contenedor">
+        <div>
+            <!-- Redirige a quito.html -->
+            <button type="button" onclick="location.href='/UIO/inicio.html'">Quito</button>
+        </div>
+        <div>
+            <!-- Redirige a guayaquil.html -->
+            <button type="button" onclick="location.href='/GYE/inicio.html'">Guayaquil</button>
+        </div>
+    </div>
+</body>
+</html>

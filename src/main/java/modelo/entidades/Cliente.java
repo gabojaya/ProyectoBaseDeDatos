@@ -12,7 +12,6 @@ public class Cliente implements Serializable{
 	private int idCliente;
 	private String cedula;
 	private String nombre; 
-	//private String apellido;
 	private String telefono;
 	private String email;
 	private String idSucursal;

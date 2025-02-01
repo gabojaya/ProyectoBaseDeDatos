@@ -1,0 +1,173 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Encabezado */
+.header {
+    background-color: #00264d;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.location-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.location-btn {
+    background-color: #ffffff;
+    color: #00264d;
+    border: 2px solid #00264d;
+    border-radius: 20px;
+    padding: 5px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.location-btn:hover {
+    background-color: #cce6ff;
+}
+
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    flex: 1;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background-color: #003366;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+}
+
+.sidebar nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #00509e;
+}
+
+.sidebar nav a.active {
+    background-color: #336699;
+    font-weight: bold;
+}
+
+.sidebar nav a:hover {
+    background-color: #6699cc;
+}
+
+/* Contenido principal */
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f9;
+    padding: 20px;
+}
+
+/* Sección de reservas */
+.reservation-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.reservation-section h1 {
+    color: #00264d;
+    margin-bottom: 20px;
+}
+
+/* Formulario */
+.reservation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #00264d;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #00509e;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 80, 158, 0.5);
+}
+
+/* Botón de envío */
+.submit-btn {
+    background-color: #00509e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #336699;
+}
+
+.location-btn.active {
+    background-color: #00509e; /* Cambia el color de fondo */
+    color: white; /* Cambia el color del texto */
+    border-color: #00509e; /* Cambia el color del borde */
+  }
+  
+.location-btn.active {
+    background-color: #00509e; /* Cambia el color de fondo */
+    color: white; /* Cambia el color del texto */
+    border-color: #00509e; /* Cambia el color del borde */
+}
+
+.location-btn.active {
+    background-color: #00509e; /* Cambia el color de fondo */
+    color: white; /* Cambia el color del texto */
+    border-color: #00509e; /* Cambia el color del borde */
+  }
