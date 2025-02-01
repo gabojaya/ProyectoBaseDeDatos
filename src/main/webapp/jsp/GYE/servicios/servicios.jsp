@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios</title>
-    <link rel="stylesheet" href="/GYE/tabla.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/GYE/tabla.css">
 </head>
 <body>
     <!-- Encabezado -->
@@ -20,12 +20,12 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <nav>
-                <a href="/GYE/inicio.html">Inicio</a>
-                <a href="/GYE/reservas/reservas.html">Reservas</a>
-                <a href="/GYE/servicios/servicios.html" class="active">Servicios</a>
-                <a href="/GYE/clientes/clientes.html">Clientes</a>
-                <a href="/GYE/historial/historial.html">Historial</a>
-                <a href="/GYE/empleados/empleados.html">Empleados</a>
+                <a href="${pageContext.request.contextPath}/jsp/GYE/inicio.html">Inicio</a>
+                <a href="${pageContext.request.contextPath}/jsp/GYE/reservas/reservas.html">Reservas</a>
+                <a href="${pageContext.request.contextPath}/jsp/GYE/servicios/servicios.html" class="active">Servicios</a>
+                <a href="${pageContext.request.contextPath}/jsp/GYE/clientes/clientes.html">Clientes</a>
+                <a href="${pageContext.request.contextPath}/jsp/GYE/historial/historial.html">Historial</a>
+                <a href="${pageContext.request.contextPath}/jsp/GYE/empleados/empleados.html">Empleados</a>
             </nav>
         </aside>
 

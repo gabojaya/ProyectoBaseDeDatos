@@ -10,8 +10,8 @@
     <!-- Encabezado -->
     <header class="header">
         <div class="location-buttons">
-            <button type="button" class="location-btn" onclick="location.href='/UIO/inicio.html'">Quito</button>
-            <button type="button" class="location-btn active" onclick="location.href='/GYE/inicio.html'">Guayaquil</button>
+            <button type="button" class="location-btn" onclick="location.href='/UIO/inicio.jsp'">Quito</button>
+            <button type="button" class="location-btn active" onclick="location.href='/GYE/inicio.jsp'">Guayaquil</button>
         </div>
     </header>
 
@@ -20,12 +20,12 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <nav>
-                <a href="/GYE/inicio.html" class="active">Inicio</a>
-                <a href="/GYE/reservas/reservas.html">Reservas</a>
-                <a href="/GYE/servicios/servicios.html">Servicios</a>
-                <a href="/GYE/clientes/clientes.html">Clientes</a>
-                <a href="/GYE/historial/historial.html">Historial</a>
-                <a href="/GYE/empleados/empleados.html">Empleados</a>
+                <a href="/GYE/inicio.jsp" class="active">Inicio</a>
+                <a href="/GYE/reservas/reservas.jsp">Reservas</a>
+                <a href="/GYE/servicios/servicios.jsp">Servicios</a>
+                <a href="/GYE/clientes/clientes.jsp">Clientes</a>
+                <a href="/GYE/historial/historial.jsp">Historial</a>
+                <a href="/GYE/empleados/empleados.jsp">Empleados</a>
             </nav>
         </aside>
 

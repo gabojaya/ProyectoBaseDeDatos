@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar servicio</title>
-    <link rel="stylesheet" href="/GYE/tabla.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/GYE/tabla.css">
 </head>
 <body>
     <div class="content">

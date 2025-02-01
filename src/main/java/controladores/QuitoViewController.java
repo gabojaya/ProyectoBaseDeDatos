@@ -13,7 +13,7 @@ import modelo.dao.ClienteQuitoDAO;
 import modelo.entidades.Cliente;
 
 @WebServlet("/QuitoViewController")
-public class QuitoView extends HttpServlet {
+public class QuitoViewController extends HttpServlet {
 
 	/**
 	 * 
@@ -41,9 +41,68 @@ public class QuitoView extends HttpServlet {
 		case "solicitarClientesQuito":
 			this.solicitarClientesQuito(req, resp);
 			break;
+		case "solicitarInicioQuito":
+			this.solicitarInicioQuito(req, resp);
+			break;
+		case "solicitarReservaQuito":
+			this.solicitarReservaQuito(req, resp);
+			break;
+		case "solicitarHistorialQuito":
+			this.solicitarHistorialQuito(req, resp);
+			break;
+		case "solicitarEmpleadosQuito":
+			this.solicitarEmpleadosQuito(req, resp);
+			break;
+		case "solicitarServiciosQuito":
+			this.solicitarServiciosQuito(req, resp);
+			break;
+		case "solicitarDatosPrivadosQuito":
+			this.solicitarDatosPrivadosQuito(req, resp);
+			break;
+			
+			
+		case "solicitarSucursales":
+			this.solicitarSucursales(req, resp);
+			break;
 			
 		
 		}
+	}
+
+	private void solicitarSucursales(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		req.getRequestDispatcher("jsp/sucursales.jsp").forward(req, resp);
+		
+	}
+
+	private void solicitarDatosPrivadosQuito(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		req.getRequestDispatcher("jsp/UIO/privado/privado.jsp").forward(req, resp);
+		
+	}
+
+	private void solicitarServiciosQuito(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		req.getRequestDispatcher("jsp/UIO/servicios/servicios.jsp").forward(req, resp);
+		
+	}
+
+	private void solicitarEmpleadosQuito(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		req.getRequestDispatcher("jsp/UIO/empleados/empleados.jsp").forward(req, resp);
+		
+	}
+
+	private void solicitarHistorialQuito(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
+		req.getRequestDispatcher("jsp/UIO/historial/historial.jsp").forward(req, resp);
+		
+	}
+
+	private void solicitarReservaQuito(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
+		req.getRequestDispatcher("jsp/UIO/reservas/reservas.jsp").forward(req, resp);
+		
+	}
+
+	private void solicitarInicioQuito(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
+		req.getRequestDispatcher("jsp/UIO/inicio.jsp").forward(req, resp);
+		
 	}
 
 	private void solicitarClientesQuito(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -55,7 +114,7 @@ public class QuitoView extends HttpServlet {
 				List<Cliente> clientesQuito = clienteQDAO.getClientesQuito();
 				
 	            if (!clientesQuito.isEmpty()) {
-	                System.out.println("Clientes de Guayaquil:");
+	                System.out.println("Clientes de Quito:");
 	                for (Cliente cliente : clientesQuito) {
 	                    System.out.println(cliente.getIdCliente() + " - " + cliente.getCedula() + " - " + cliente.getNombre() +
 	                            " - " + cliente.getTelefono() + " - " + cliente.getEmail() + " - " + cliente.getIdSucursal());

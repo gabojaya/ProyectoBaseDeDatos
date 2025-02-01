@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar empleado</title>
-    <link rel="stylesheet" href="/UIO/tabla.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/UIO/tabla.css">
 </head>
 <body>
     <div class="content">
