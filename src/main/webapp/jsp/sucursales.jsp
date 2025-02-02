@@ -15,7 +15,7 @@
         </div>
         <div>
             <!-- Redirige a guayaquil.html -->
-            <button type="button" onclick="location.href='/GYE/inicio.html'">Guayaquil</button>
+            <button type="button" onclick="location.href='${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarInicioGuayaquil'">Guayaquil</button>
         </div>
     </div>
 </body>

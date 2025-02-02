@@ -10,8 +10,12 @@
     <!-- Encabezado -->
     <header class="header">
         <div class="location-buttons">
-            <button type="button" class="location-btn" onclick="location.href='/UIO/inicio.html'">Quito</button>
-            <button type="button" class="location-btn active" onclick="location.href='/GYE/inicio.html'">Guayaquil</button>
+            <button type="button" class="location-btn active"
+				onclick="location.href='${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito'">
+				Quito</button>
+            <button type="button" class="location-btn active"
+				onclick="location.href='${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarInicioGuayaquil'">
+				Guayaquil</button>
         </div>
     </header>
 
@@ -20,13 +24,19 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <nav>
-                <a href="${pageContext.request.contextPath}/jsp/GYE/inicio.html">Inicio</a>
-                <a href="${pageContext.request.contextPath}/jsp/GYE/reservas/reservas.html">Reservas</a>
-                <a href="${pageContext.request.contextPath}/jsp/GYE/servicios/servicios.html" class="active">Servicios</a>
-                <a href="${pageContext.request.contextPath}/jsp/GYE/clientes/clientes.html">Clientes</a>
-                <a href="${pageContext.request.contextPath}/jsp/GYE/historial/historial.html">Historial</a>
-                <a href="${pageContext.request.contextPath}/jsp/GYE/empleados/empleados.html">Empleados</a>
-            </nav>
+				<a
+					href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarInicioGuayaquil"
+					class="active">Inicio</a> <a
+					href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarReservaGuayaquil">Reservas</a>
+				<a
+					href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarServiciosGuayaquil">Servicios</a>
+				<a
+					href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarClientesGuayaquil">Clientes</a>
+				<a
+					href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarHistorialGuayaquil">Historial</a>
+				<a
+					href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarEmpleadosGuayaquil">Empleados</a>
+			</nav>
         </aside>
 
         <!-- Contenido Principal -->

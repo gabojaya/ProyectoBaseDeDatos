@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,88 +13,73 @@
 <body>
     <!-- Encabezado -->
     <header class="header">
-        <div class="location-buttons">
-            <button type="button" class="location-btn" onclick="location.href='/UIO/inicio.html'">Quito</button>
-            <button type="button" class="location-btn active" onclick="location.href='/GYE/inicio.html'">Guayaquil</button>
-        </div>
-    </header>
+		<div class="location-buttons">
+			<button type="button" class="location-btn active"
+				onclick="location.href='${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito'">
+				Quito</button>
+			<button type="button" class="location-btn active"
+				onclick="location.href='${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarInicioGuayaquil'">
+				Guayaquil</button>
+		</div>
+	</header>
 
     <!-- Contenedor Principal -->
     <div class="main-container">
         <!-- Sidebar -->
         <aside class="sidebar">
             <nav>
-                <a href="${pageContext.request.contextPath}/jsp/GYE/inicio.html">Inicio</a>
-                <a href="${pageContext.request.contextPath}/jsp/GYE/reservas/reservas.html">Reservas</a>
-                <a href="${pageContext.request.contextPath}/jsp/GYE/servicios/servicios.html">Servicios</a>
-                <a href="${pageContext.request.contextPath}/jsp/GYE/clientes/clientes.html" class="active">Clientes</a>
-                <a href="${pageContext.request.contextPath}/jsp/GYE/historial/historial.html">Historial</a>
-                <a href="${pageContext.request.contextPath}/jsp/GYE/empleados/empleados.html">Empleados</a>
+                <a href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarInicioGuayaquil">Inicio</a>
+                <a href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarReservaGuayaquil">Reservas</a>
+                <a href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarServiciosGuayaquil">Servicios</a>
+                <a href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarClientesGuayaquil" class="active">Clientes</a>
+                <a href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarHistorialGuayaquil">Historial</a>
+                <a href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarEmpleadosGuayaquil">Empleados</a>
             </nav>
         </aside>
 
-        <!-- Contenido Principal -->
-        <main class="content">
-            <div class="welcome-section">
-                <div class="search-container">
-                    <input type="text" placeholder="Buscar Cliente" class="search-bar">
-                    <button class="search-btn">🔍</button>
-                </div>
-                <table class="services-table">
-                    <thead>
-                        <tr>
-                            <th>Nro</th>
-                            <th>Nombre</th>
-                            <th>Telefono</th>
-                            <th>Correo</th>
-                            <th>Mascotas</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Mateo Robles</td>
-                            <td>0999875642</td>
-                            <td>mat@gmail.com</td>
-                            <td>
-                                <button class="action-btn view-btn">Ver</button>
-                            </td>
-                            <td>
-                                <button class="action-btn modify-btn" onclick="location.href='clienteTabla.html'"">Modificar</button>
-                                <button class="action-btn delete-btn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>
-                                <button class="action-btn view-btn">Ver</button>
-                            </td>
-                            <td>
-                                <button class="action-btn modify-btn">Modificar</button>
-                                <button class="action-btn delete-btn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>
-                                <button class="action-btn view-btn">Ver</button>
-                            </td>
-                            <td>
-                                <button class="action-btn modify-btn">Modificar</button>
-                                <button class="action-btn delete-btn">Eliminar</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </main>
-    </div>
+		<!-- Contenido Principal -->
+		<main class="content">
+
+			<div class="welcome-section">
+				<div class="search-container">
+					<input type="text" placeholder="Buscar Cliente" class="search-bar">
+					<button class="search-btn">O</button>
+				</div>
+				<table class="services-table">
+					<thead>
+						<tr>
+							<th>Nro</th>
+							<th>Nombre</th>
+							<th>Teléfono</th>
+							<th>Correo</th>
+							<th>Mascotas</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="cliente" items="${clientesGuayaquil}"
+							varStatus="status">
+							<tr>
+								<td>${cliente.idCliente}</td>
+								<td>${cliente.nombre}</td>		
+								<td>${cliente.telefono}</td>
+								<td>${cliente.email}</td>
+								<td>
+									<button class="action-btn view-btn">Ver</button>
+								</td>
+								<td>
+									<button class="action-btn modify-btn"
+										onclick="location.href='clienteTabla.html'">Modificar</button>
+									<button class="action-btn delete-btn">Eliminar</button>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+
+
+		</main>
+	</div>
 </body>
 </html>

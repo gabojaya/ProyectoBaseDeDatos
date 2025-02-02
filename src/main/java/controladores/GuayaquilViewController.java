@@ -39,21 +39,63 @@ public class GuayaquilViewController extends HttpServlet {
 		String ruta = (req.getParameter("ruta") == null) ? "listar" : req.getParameter("ruta");
 
 		switch (ruta) {
-		case "solicitarGuayaquilQuito":
-			this.solicitarGuayaquilQuito(req, resp);
+		case "solicitarClientesGuayaquil":
+			this.solicitarClientesGuayaquil(req, resp);
+			break;
+		case "solicitarInicioGuayaquil":
+			this.solicitarInicioGuayaquil(req, resp);
+			break;
+		case "solicitarReservaGuayaquil":
+			this.solicitarReservaGuayaquil(req, resp);
+			break;
+		case "solicitarHistorialGuayaquil":
+			this.solicitarHistorialGuayaquil(req, resp);
+			break;
+		case "solicitarEmpleadosGuayaquil":
+			this.solicitarEmpleadosGuayaquil(req, resp);
+			break;
+		case "solicitarServiciosGuayaquil":
+			this.solicitarServiciosGuayaquil(req, resp);
 			break;
 			
-		
 		}
 	}
+	
+	
 
-	private void solicitarGuayaquilQuito(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	private void solicitarServiciosGuayaquil(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		req.getRequestDispatcher("jsp/GYE/servicios/servicios.jsp").forward(req, resp);
+		
+	}
+
+	private void solicitarEmpleadosGuayaquil(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		req.getRequestDispatcher("jsp/GYE/empleados/empleados.jsp").forward(req, resp);
+		
+	}
+
+	private void solicitarHistorialGuayaquil(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
+		req.getRequestDispatcher("jsp/GYE/historial/historial.jsp").forward(req, resp);
+		
+	}
+
+	private void solicitarReservaGuayaquil(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
+		req.getRequestDispatcher("jsp/GYE/reservas/reservas.jsp").forward(req, resp);
+		
+	}
+
+	private void solicitarInicioGuayaquil(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
+		req.getRequestDispatcher("jsp/GYE/inicio.jsp").forward(req, resp);
+		
+	}
+
+	private void solicitarClientesGuayaquil(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("Entro a solicitar clientes");
-		ClienteGuayaquilDAO clienteQDAO = new ClienteGuayaquilDAO();
+		ClienteGuayaquilDAO clienteGDAO = new ClienteGuayaquilDAO();
 
             try {
-				List<Cliente> clientesGuayaquil = clienteQDAO.getClientesGuayaquil();
+				List<Cliente> clientesGuayaquil = clienteGDAO.getClientesGuayaquil();
 				
 	            if (!clientesGuayaquil.isEmpty()) {
 	                System.out.println("Clientes de Guayaquil:");
@@ -65,7 +107,7 @@ public class GuayaquilViewController extends HttpServlet {
 				
 				
 				req.setAttribute("clientesGuayaquil", clientesGuayaquil);
-				req.getRequestDispatcher("jsp/UIO/clientes/clientes.jsp").forward(req, resp);
+				req.getRequestDispatcher("jsp/GYE/clientes/clientes.jsp").forward(req, resp);
 				
 				
 			} catch (SQLException e) {
