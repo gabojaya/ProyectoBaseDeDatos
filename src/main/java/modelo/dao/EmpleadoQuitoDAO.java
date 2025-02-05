@@ -9,6 +9,7 @@ import java.util.List;
 
 import modelo.bdd.BddConnectionQuito;
 import modelo.entidades.Empleado;
+import modelo.entidades.DatosPrivadosEmpleado;
 
 public class EmpleadoQuitoDAO {
     public EmpleadoQuitoDAO() {
@@ -157,5 +158,124 @@ public class EmpleadoQuitoDAO {
 
         return empleado;
     }
+    
+// 🔥 Métodos para VistaDatosPrivadosEmpleado
+    
+    public DatosPrivadosEmpleado getDatosPrivadosById(int idEmpleado) throws SQLException {
+        DatosPrivadosEmpleado empleado = null;
+
+        String _SQL_GET_PRIVADOS = "SELECT idEmpleado, direccion, email, salario, contraseña FROM [ACERDERONNY].sucursalQuito.dbo.VistaDatosPrivadosEmpleado WHERE idEmpleado = ?";
+
+        Connection conn = BddConnectionQuito.getConexion();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            pstmt = conn.prepareStatement(_SQL_GET_PRIVADOS);
+            pstmt.setInt(1, idEmpleado);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                empleado = new DatosPrivadosEmpleado();
+                empleado.setIdEmpleado(rs.getInt("idEmpleado"));
+                empleado.setDireccion(rs.getString("direccion"));
+                empleado.setEmail(rs.getString("email"));
+                empleado.setSalario(rs.getDouble("salario"));
+                empleado.setContrasena(rs.getString("contraseña"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BddConnectionQuito.cerrar(rs);
+            BddConnectionQuito.cerrar(pstmt);
+            BddConnectionQuito.cerrar();
+        }
+
+        return empleado;
+    }
+    
+    public boolean updateDatosPrivadosEmpleado(DatosPrivadosEmpleado empleado) throws SQLException {
+        boolean actualizado = false;
+
+        String _SQL_UPDATE_PRIVADOS = "UPDATE [ACERDERONNY].sucursalQuito.dbo.VistaDatosPrivadosEmpleado " +
+                                      "SET direccion = ?, email = ?, salario = ?, contraseña = ? " +
+                                      "WHERE idEmpleado = ?";
+
+        Connection conn = BddConnectionQuito.getConexion();
+        PreparedStatement pstmt = null;
+
+        try {
+            pstmt = conn.prepareStatement(_SQL_UPDATE_PRIVADOS);
+            pstmt.setString(1, empleado.getDireccion());
+            pstmt.setString(2, empleado.getEmail());
+            pstmt.setDouble(3, empleado.getSalario());
+            pstmt.setString(4, empleado.getContrasena());
+            pstmt.setInt(5, empleado.getIdEmpleado());
+
+            int filasAfectadas = pstmt.executeUpdate();
+            actualizado = (filasAfectadas > 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BddConnectionQuito.cerrar(pstmt);
+            BddConnectionQuito.cerrar();
+        }
+
+        return actualizado;
+    }
+    
+    public boolean deleteDatosPrivadosEmpleado(int idEmpleado) throws SQLException {
+        boolean eliminado = false;
+
+        String _SQL_DELETE_PRIVADOS = "DELETE FROM [ACERDERONNY].sucursalQuito.dbo.VistaDatosPrivadosEmpleado WHERE idEmpleado = ?";
+
+        Connection conn = BddConnectionQuito.getConexion();
+        PreparedStatement pstmt = null;
+
+        try {
+            pstmt = conn.prepareStatement(_SQL_DELETE_PRIVADOS);
+            pstmt.setInt(1, idEmpleado);
+
+            int filasAfectadas = pstmt.executeUpdate();
+            eliminado = (filasAfectadas > 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BddConnectionQuito.cerrar(pstmt);
+            BddConnectionQuito.cerrar();
+        }
+
+        return eliminado;
+    }
+    
+    public List<DatosPrivadosEmpleado> getAllDatosPrivados() throws SQLException {
+        List<DatosPrivadosEmpleado> empleados = new ArrayList<>();
+
+        String _SQL_GET_ALL_PRIVADOS = "SELECT idEmpleado, direccion, email, salario, contraseña FROM [CASA].sucursalQuito.dbo.VistaDatosPrivadosEmpleado";
+
+        Connection conn = BddConnectionQuito.getConexion();
+        PreparedStatement pstmt = conn.prepareStatement(_SQL_GET_ALL_PRIVADOS);
+        ResultSet rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+        	DatosPrivadosEmpleado empleado = new DatosPrivadosEmpleado();
+            empleado.setIdEmpleado(rs.getInt("idEmpleado"));
+            empleado.setDireccion(rs.getString("direccion"));
+            empleado.setEmail(rs.getString("email"));
+            empleado.setSalario(rs.getDouble("salario"));
+            empleado.setContrasena(rs.getString("contraseña"));
+            empleados.add(empleado);
+        }
+
+        BddConnectionQuito.cerrar(rs);
+        BddConnectionQuito.cerrar(pstmt);
+        BddConnectionQuito.cerrar();
+
+        return empleados;
+    }
+
+
+    
+    
 
 }
