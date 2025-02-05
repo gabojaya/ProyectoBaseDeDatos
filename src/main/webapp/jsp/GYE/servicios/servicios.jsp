@@ -43,6 +43,7 @@
 			</nav>
 		</aside>
 
+
 		<!-- Contenido Principal -->
 		<main class="content">
 			<div class="welcome-section">
@@ -51,44 +52,36 @@
 					<input type="text" placeholder="Buscar Servicio" class="search-bar">
 					<button class="search-btn">ð</button>
 				</div>
+				<div class="search-container">
+					<button class="action-btn modify-btn"
+						onclick="window.location.href = `ServicioGuayaquilController?ruta=solicitarAgregarServicio`">Agregar Servicios</button>
+				</div>
 				<table class="services-table">
 					<thead>
 						<tr>
 							<th>Nombre</th>
-							<th>Descripcion</th>
+							<th>Descripción</th>
 							<th>Precio</th>
 							<th>Acciones</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>EstÃ©tica</td>
-							<td>Corte de cabello + baÃ±o</td>
-							<td>$20</td>
-							<td>
-								<button class="action-btn modify-btn"
-									onclick="location.href='servicioTabla.html'"">Modificar</button>
-								<button class="action-btn delete-btn">Eliminar</button>
-							</td>
-						</tr>
-						<tr>
-							<td>---</td>
-							<td>---</td>
-							<td>---</td>
-							<td>
-								<button class="action-btn modify-btn">Modificar</button>
-								<button class="action-btn delete-btn">Eliminar</button>
-							</td>
-						</tr>
-						<tr>
-							<td>---</td>
-							<td>---</td>
-							<td>---</td>
-							<td>
-								<button class="action-btn modify-btn">Modificar</button>
-								<button class="action-btn delete-btn">Eliminar</button>
-							</td>
-						</tr>
+						<c:forEach var="servicio" items="${serviciosGuayaquil}">
+							<tr>
+								<td>${servicio.nombre}</td>
+								<td>${servicio.descripcion}</td>
+								<td>${servicio.precio}</td>
+								<td>
+									<button class="action-btn modify-btn"
+										onclick="window.location.href = `ServicioGuayaquilController?ruta=solicitarModificarServicio&idServicio=${servicio.idServicio}`">Modificar</button>
+									<a
+									href="ServicioGuayaquilController?ruta=eliminarServicio&idServicio=${servicio.idServicio}"
+									class="action-btn delete-btn"
+									onclick="return confirm('¿Estás seguro de que quieres eliminar este servicio?');">
+										Eliminar </a>
+								</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>

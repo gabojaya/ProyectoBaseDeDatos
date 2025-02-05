@@ -42,62 +42,53 @@
 			</nav>
         </aside>
 
-        <!-- Contenido Principal -->
-        <main class="content">
-            <div class="welcome-section">
-                <div class="search-container">
-                    <input type="text" placeholder="Buscar empleado" class="search-bar">
-                    <button class="search-btn">ð</button>
-                </div>
-                <table class="services-table">
-                    <thead>
-                        <tr>
-                            <th>Nro</th>
-                            <th>Nombre</th>
-                            <th>CÃ©dula</th>
-                            <th>TelÃ©fono</th>                            </th>
-                            <th>Cargo</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Juan Perez</td>
-                            <td>1759874021</td>
-                            <td>0998565425</td>
-                            <td>Estilista</td>
-                            <td>
-                                <button class="action-btn modify-btn" onclick="location.href='empleadoTabla.html'"">Modificar</button>
-                                <button class="action-btn delete-btn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>
-                                <button class="action-btn modify-btn" onclick="location.href='empleadoTabla.html'"">Modificar</button>
-                                <button class="action-btn delete-btn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>
-                                <button class="action-btn modify-btn">Modificar</button>
-                                <button class="action-btn delete-btn">Eliminar</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </main>
-    </div>
+		<!-- Contenido Principal -->
+		<main class="content">
+
+			<div class="welcome-section">
+				<div class="search-container">
+					<input type="text" placeholder="Buscar empleado" class="search-bar">
+					<button class="search-btn">🔍</button>
+				</div>
+				<div class="search-container">
+					<button class="action-btn modify-btn"
+						onclick="window.location.href = `EmpleadoGuayaquilController?ruta=solicitarAgregarEmpleado`">Agregar Empleado</button>
+				</div>
+				<table class="services-table">
+					<thead>
+						<tr>
+							<th>Nro</th>
+							<th>Nombre</th>
+							<th>Cédula</th>
+							<th>Teléfono</th>
+							<th>Cargo</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="empleado" items="${empleadoGuayaquil}"
+							varStatus="status">
+							<tr>
+								<td>${status.index + 1}</td>
+								<td>${empleado.nombre}</td>
+								<td>${empleado.cedula}</td>
+								<td>${empleado.telefono}</td>
+								<td>${empleado.cargo}</td>
+								<td>
+									<button class="action-btn modify-btn"
+										onclick="window.location.href = `EmpleadoGuayaquilController?ruta=solicitarModificarEmpleado&idEmpleado=${empleado.idEmpleado}`">Modificar</button>
+									<a
+									href="EmpleadoGuayaquilController?ruta=eliminarEmpleado&idEmpleado=${empleado.idEmpleado}"
+									class="action-btn delete-btn"
+									onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">
+										Eliminar </a>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</main>
+	</div>
 </body>
 </html>

@@ -227,7 +227,7 @@ public class QuitoViewController extends HttpServlet {
 				serviciosQuito = servicioQuito.getServiciosQuito();
 				
 				if (!serviciosQuito.isEmpty()) {
-					System.out.println("Empleados de Quito:");
+					System.out.println("Servicios de Quito:");
 					for (Servicio servicio : serviciosQuito) {
 						System.out.println(servicio.getNombre() + " - " + servicio.getDescripcion() + " - "
 								+ servicio.getPrecio());

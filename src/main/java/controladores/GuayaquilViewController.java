@@ -10,8 +10,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import modelo.dao.ClienteGuayaquilDAO;
-import modelo.dao.EmpleadoQuitoDAO;
+import modelo.dao.ServicioGuayaquilDAO;
+import modelo.dao.EmpleadoGuayaquilDAO;
 import modelo.entidades.Cliente;
+import modelo.entidades.Empleado;
+import modelo.entidades.Servicio;
+
 
 @WebServlet("/GuayaquilViewController")
 public class GuayaquilViewController extends HttpServlet {
@@ -196,19 +200,58 @@ public class GuayaquilViewController extends HttpServlet {
 
 	}
 
-	private void solicitarServiciosGuayaquil(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		req.getRequestDispatcher("jsp/GYE/servicios/servicios.jsp").forward(req, resp);
+	private void solicitarServiciosGuayaquil(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("Entro a solicitar empleados");
+		ServicioGuayaquilDAO servicioGuayaquil = new ServicioGuayaquilDAO();
 
+			List<Servicio> serviciosGuayaquil;
+			try {
+				serviciosGuayaquil = servicioGuayaquil.getServiciosGuayaquil();
+				
+				if (!serviciosGuayaquil.isEmpty()) {
+					System.out.println("Servicios de Guayaquil:");
+					for (Servicio servicio : serviciosGuayaquil) {
+						System.out.println(servicio.getNombre() + " - " + servicio.getDescripcion() + " - "
+								+ servicio.getPrecio());
+					}
+				}
+				
+				req.setAttribute("serviciosGuayaquil", serviciosGuayaquil);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		req.getRequestDispatcher("jsp/GYE/servicios/servicios.jsp").forward(req, resp);
+		
 	}
 
-	private void solicitarEmpleadosGuayaquil(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		
-	
+	private void solicitarEmpleadosGuayaquil(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("Entro a solicitar empleados");
+		EmpleadoGuayaquilDAO empleadosGuayaquil = new EmpleadoGuayaquilDAO();
+
+			List<Empleado> empleadoGuayaquil;
+			try {
+				empleadoGuayaquil = empleadosGuayaquil.getEmpleadosGuayaquil();
+				
+				if (!empleadoGuayaquil.isEmpty()) {
+					System.out.println("Empleados de Guayaquil:");
+					for (Empleado empleado : empleadoGuayaquil) {
+						System.out.println(empleado.getIdEmpleado() + " - " + empleado.getCedula() + " - "
+								+ empleado.getNombre() + " - " + empleado.getTelefono() + " - " + " - "
+								+ empleado.getIdSucursal());
+					}
+				}
+				
+				req.setAttribute("empleadoGuayaquil", empleadoGuayaquil);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 
 		req.getRequestDispatcher("jsp/GYE/empleados/empleados.jsp").forward(req, resp);
-
+		
 	}
 
 	private void solicitarHistorialGuayaquil(HttpServletRequest req, HttpServletResponse resp)
