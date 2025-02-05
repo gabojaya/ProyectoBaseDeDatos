@@ -12,7 +12,7 @@ public class BddConnectionQuito {
 
     private BddConnectionQuito() {
         
-        String servidor = "ACERDERONNY";
+        String servidor = "CASA";
         String puerto = "1433"; 
         String database = "sucursalQuito";
         String usuario = "sa"; 
