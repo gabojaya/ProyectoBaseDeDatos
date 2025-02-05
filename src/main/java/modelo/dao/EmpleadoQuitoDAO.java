@@ -164,7 +164,7 @@ public class EmpleadoQuitoDAO {
     public DatosPrivadosEmpleado getDatosPrivadosById(int idEmpleado) throws SQLException {
         DatosPrivadosEmpleado empleado = null;
 
-        String _SQL_GET_PRIVADOS = "SELECT idEmpleado, direccion, email, salario, contraseña FROM [ACERDERONNY].sucursalQuito.dbo.VistaDatosPrivadosEmpleado WHERE idEmpleado = ?";
+        String _SQL_GET_PRIVADOS = "SELECT idEmpleado, direccion, email, salario, contrasena FROM [ACERDERONNY].sucursalQuito.dbo.VistaDatosPrivadosEmpleado WHERE idEmpleado = ?";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = null;
@@ -181,7 +181,7 @@ public class EmpleadoQuitoDAO {
                 empleado.setDireccion(rs.getString("direccion"));
                 empleado.setEmail(rs.getString("email"));
                 empleado.setSalario(rs.getDouble("salario"));
-                empleado.setContrasena(rs.getString("contraseña"));
+                empleado.setContrasena(rs.getString("contrasena"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -198,7 +198,7 @@ public class EmpleadoQuitoDAO {
         boolean insertado = false;
 
         String _SQL_INSERT_PRIVADOS = "INSERT INTO [ACERDERONNY].sucursalQuito.dbo.VistaDatosPrivadosEmpleado " +
-                                      "(idEmpleado, direccion, email, salario, contraseña) VALUES (?, ?, ?, ?, ?)";
+                                      "(idEmpleado, direccion, email, salario, contrasena) VALUES (?, ?, ?, ?, ?)";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = null;
@@ -227,7 +227,7 @@ public class EmpleadoQuitoDAO {
         boolean actualizado = false;
 
         String _SQL_UPDATE_PRIVADOS = "UPDATE [ACERDERONNY].sucursalQuito.dbo.VistaDatosPrivadosEmpleado " +
-                                      "SET direccion = ?, email = ?, salario = ?, contraseña = ? " +
+                                      "SET direccion = ?, email = ?, salario = ?, contrasena = ? " +
                                       "WHERE idEmpleado = ?";
 
         Connection conn = BddConnectionQuito.getConexion();
@@ -280,7 +280,7 @@ public class EmpleadoQuitoDAO {
     public List<DatosPrivadosEmpleado> getAllDatosPrivados() throws SQLException {
         List<DatosPrivadosEmpleado> empleados = new ArrayList<>();
 
-        String _SQL_GET_ALL_PRIVADOS = "SELECT idEmpleado, direccion, email, salario, contraseña FROM [ACERDERONNY].sucursalQuito.dbo.VistaDatosPrivadosEmpleado";
+        String _SQL_GET_ALL_PRIVADOS = "SELECT idEmpleado, direccion, email, salario, contrasena FROM [ACERDERONNY].sucursalQuito.dbo.VistaDatosPrivadosEmpleado";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = conn.prepareStatement(_SQL_GET_ALL_PRIVADOS);
@@ -292,7 +292,7 @@ public class EmpleadoQuitoDAO {
             empleado.setDireccion(rs.getString("direccion"));
             empleado.setEmail(rs.getString("email"));
             empleado.setSalario(rs.getDouble("salario"));
-            empleado.setContrasena(rs.getString("contraseña"));
+            empleado.setContrasena(rs.getString("contrasena"));
             empleados.add(empleado);
         }
 
