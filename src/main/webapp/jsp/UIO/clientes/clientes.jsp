@@ -81,7 +81,7 @@
 								<td>${cliente.telefono}</td>
 								<td>${cliente.email}</td>
 								<td>
-									<button class="action-btn view-btn">Ver</button>
+									<button class="action-btn pet-btn" onclick="location.href='/UIO/mascota/mascota.html'"">Ver</button>
 								</td>
 								<td>
 									<button class="action-btn modify-btn"
