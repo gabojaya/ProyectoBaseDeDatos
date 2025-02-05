@@ -11,10 +11,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import modelo.dao.ClienteQuitoDAO;
 import modelo.dao.EmpleadoQuitoDAO;
+import modelo.dao.ReservaQuitoDAO;
 import modelo.dao.ServicioQuitoDAO;
 import modelo.entidades.Cliente;
 import modelo.entidades.DatosPrivadosEmpleado;
 import modelo.entidades.Empleado;
+import modelo.entidades.Reserva;
 import modelo.entidades.Servicio;
 
 @WebServlet("/QuitoViewController")
@@ -299,6 +301,28 @@ public class QuitoViewController extends HttpServlet {
 	
 
 	private void solicitarHistorialQuito(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
+		System.out.println("Entro a solicitar historial reservas");
+		ReservaQuitoDAO reservaQuito = new ReservaQuitoDAO();
+
+
+			List<Reserva> reservasQuito;
+			try {
+				reservasQuito = reservaQuito.getReservas();
+				
+				if (!reservasQuito.isEmpty()) {
+					System.out.println("Servicios de Quito:");
+					for (Reserva servicio : reservasQuito) {
+						System.out.println(servicio.getIdCliente() + " - " + servicio.getIdCliente() + " - "
+								+ servicio.getIdCliente());
+					}
+				}
+				
+				req.setAttribute("reservasQuito", reservasQuito);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 		req.getRequestDispatcher("jsp/UIO/historial/historial.jsp").forward(req, resp);
 		
 	}

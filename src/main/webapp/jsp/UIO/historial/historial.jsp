@@ -4,95 +4,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historial</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/UIO/tabla.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historial</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/jsp/UIO/tabla.css">
 </head>
 <body>
-    <!-- Encabezado -->
-    <header class="header">
-        <div class="location-buttons">
-            <button type="button" class="location-btn active"
+	<!-- Encabezado -->
+	<header class="header">
+		<div class="location-buttons">
+			<button type="button" class="location-btn active"
 				onclick="location.href='${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito'">
 				Quito</button>
-            <button type="button"  class="location-btn "
+			<button type="button" class="location-btn "
 				onclick="location.href='${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarInicioGuayaquil'">
 				Guayaquil</button>
-        </div>
-    </header>
+		</div>
+	</header>
 
-    <!-- Contenedor Principal -->
-    <div class="main-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
+	<!-- Contenedor Principal -->
+	<div class="main-container">
+		<!-- Sidebar -->
+		<aside class="sidebar">
 			<nav>
-				<a href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito">Inicio</a> <a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarReservaQuito">Reservas</a> <a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarServiciosQuito">Servicios</a> <a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarClientesQuito">Clientes</a> <a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarHistorialQuito" class="active">Historial</a> <a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarEmpleadosQuito">Empleados</a> <a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarDatosPrivadosQuito">Datos Privados</a>
+				<a
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito">Inicio</a>
+				<a
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarReservaQuito">Reservas</a>
+				<a
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarServiciosQuito">Servicios</a>
+				<a
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarClientesQuito">Clientes</a>
+				<a
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarHistorialQuito"
+					class="active">Historial</a> <a
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarEmpleadosQuito">Empleados</a>
+				<a
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarDatosPrivadosQuito">Datos
+					Privados</a>
 			</nav>
 		</aside>
 
-        <!-- Contenido Principal -->
-        <main class="content">
-            <div class="welcome-section">
-                <div class="search-container">
-                    <input type="text" placeholder="Buscar cliente" class="search-bar">
-                    <button class="search-btn">ð</button>
-                </div>
-                <table class="services-table">
-                    <thead>
-                        <tr>
-                            <th>Nro</th>
-                            <th>Fecha de la reserva</th>
-                            <th>Cliente</th>
-                            <th>Mascota</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>25/01/2025</td>
-                            <td>Mateo Robles</td>
-                            <td>Firulais</td>
-                            <td>Finalizado</td>
-                            <td>
-                                <button class="action-btn modify-btn" onclick="location.href='historialTabla.jsp'"">Modificar</button>
-                                <button class="action-btn delete-btn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>
-                                <button class="action-btn modify-btn">Modificar</button>
-                                <button class="action-btn delete-btn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>
-                                <button class="action-btn modify-btn">Modificar</button>
-                                <button class="action-btn delete-btn">Eliminar</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </main>
-    </div>
+		<!-- Contenido Principal -->
+		<main class="content">
+			<div class="welcome-section">
+				<div class="search-container">
+					<input type="text" placeholder="Buscar cliente" class="search-bar">
+					<button class="search-btn">ð</button>
+				</div>
+				<table class="services-table">
+					<thead>
+						<tr>
+							<th>Nro</th>
+							<th>Fecha de la reserva</th>
+							<th>Cliente</th>
+							<th>Mascota</th>
+							<th>Estado</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="reserva" items="${reservasQuito}"
+							varStatus="status">
+							<tr>
+								<td>${status.index + 1}</td>
+								<td>${reserva.fechaReserva}</td>
+								<td>${reserva.idCliente}</td>
+								<td>Nombre Mascota</td>
+								<!-- Reemplázalo con el dato correcto si tienes una relación con mascotas -->
+								<td>${reserva.estado}</td>
+								<td>
+									<button class="action-btn modify-btn"
+										onclick="location.href='historialTabla.jsp?id=${reserva.idReserva}'">Modificar</button>
+									<button class="action-btn delete-btn">Eliminar</button>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</main>
+	</div>
 </body>
 </html>
