@@ -12,8 +12,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import modelo.dao.ClienteGuayaquilDAO;
 import modelo.dao.ServicioGuayaquilDAO;
 import modelo.dao.EmpleadoGuayaquilDAO;
+import modelo.dao.ReservaGuayaquilDAO;
 import modelo.entidades.Cliente;
 import modelo.entidades.Empleado;
+import modelo.entidades.Reserva;
 import modelo.entidades.Servicio;
 
 
@@ -254,10 +256,31 @@ public class GuayaquilViewController extends HttpServlet {
 		
 	}
 
-	private void solicitarHistorialGuayaquil(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		req.getRequestDispatcher("jsp/GYE/historial/historial.jsp").forward(req, resp);
+	private void solicitarHistorialGuayaquil(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("Entro a solicitar historial reservas");
+		ReservaGuayaquilDAO reservaGuayaquil = new ReservaGuayaquilDAO();
 
+
+			List<Reserva> reservasGuayaquil;
+			try {
+				reservasGuayaquil = reservaGuayaquil.getReservas();
+				
+				if (!reservasGuayaquil.isEmpty()) {
+					System.out.println("Reservas de Guayaquil:");
+					for (Reserva servicio : reservasGuayaquil) {
+						System.out.println(servicio.getIdCliente() + " - " + servicio.getIdCliente() + " - "
+								+ servicio.getIdCliente());
+					}
+				}
+				
+				req.setAttribute("reservasGuayaquil", reservasGuayaquil);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		req.getRequestDispatcher("jsp/GYE/historial/historial.jsp").forward(req, resp);
+		
 	}
 
 	private void solicitarReservaGuayaquil(HttpServletRequest req, HttpServletResponse resp)
