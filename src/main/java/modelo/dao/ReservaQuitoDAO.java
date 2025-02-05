@@ -15,7 +15,7 @@ public class ReservaQuitoDAO {
 
 	public List<Reserva> getReservas() throws SQLException {
         List<Reserva> reservas = new ArrayList<>();
-        String _SQL_GET_ALL = "SELECT idReserva, fechaReserva, estado, idCliente, idSucursal, idEmpleado FROM [CASA].sucursalQuito.dbo.VistaReserva";
+        String _SQL_GET_ALL = "SELECT idReserva, fechaReserva, estado, idCliente, idSucursal, idEmpleado FROM [ACERDERONNY].sucursalQuito.dbo.VistaReserva";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = conn.prepareStatement(_SQL_GET_ALL);
@@ -41,7 +41,7 @@ public class ReservaQuitoDAO {
 
     public boolean insertReservaDistribuida(Reserva reserva) throws SQLException {
         boolean insertado = false;
-        String _SQL_INSERT = "INSERT INTO [CASA].sucursalQuito.dbo.VistaReserva (fechaReserva, estado, idCliente, idSucursal, idEmpleado) VALUES (?, ?, ?, ?, ?)";
+        String _SQL_INSERT = "INSERT INTO [ACERDERONNY].sucursalQuito.dbo.VistaReserva (fechaReserva, estado, idCliente, idSucursal, idEmpleado) VALUES (?, ?, ?, ?, ?)";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = conn.prepareStatement(_SQL_INSERT);
@@ -63,7 +63,7 @@ public class ReservaQuitoDAO {
 
     public boolean updateReservaDistribuida(Reserva reserva) throws SQLException {
         boolean actualizado = false;
-        String _SQL_UPDATE = "UPDATE [CASA].sucursalQuito.dbo.VistaReserva SET fechaReserva = ?, estado = ?, idCliente = ?, idEmpleado = ? WHERE idReserva = ?";
+        String _SQL_UPDATE = "UPDATE [ACERDERONNY].sucursalQuito.dbo.VistaReserva SET fechaReserva = ?, estado = ?, idCliente = ?, idEmpleado = ? WHERE idReserva = ?";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = conn.prepareStatement(_SQL_UPDATE);
@@ -85,7 +85,7 @@ public class ReservaQuitoDAO {
 
     public boolean deleteReservaDistribuida(int idReserva) throws SQLException {
         boolean eliminado = false;
-        String _SQL_DELETE = "DELETE FROM [CASA].sucursalQuito.dbo.VistaReserva WHERE idReserva = ?";
+        String _SQL_DELETE = "DELETE FROM [ACERDERONNY].sucursalQuito.dbo.VistaReserva WHERE idReserva = ?";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = conn.prepareStatement(_SQL_DELETE);
@@ -102,7 +102,7 @@ public class ReservaQuitoDAO {
 
     public Reserva getReservaById(int idReserva) throws SQLException {
         Reserva reserva = null;
-        String _SQL_GET_BY_ID = "SELECT idReserva, fechaReserva, estado, idCliente, idSucursal, idEmpleado FROM [CASA].sucursalQuito.dbo.VistaReserva WHERE idReserva = ?";
+        String _SQL_GET_BY_ID = "SELECT idReserva, fechaReserva, estado, idCliente, idSucursal, idEmpleado FROM [ACERDERONNY].sucursalQuito.dbo.VistaReserva WHERE idReserva = ?";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = conn.prepareStatement(_SQL_GET_BY_ID);
