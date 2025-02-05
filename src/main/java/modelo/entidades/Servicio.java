@@ -12,9 +12,9 @@ public class Servicio implements Serializable {
 	private String nombre;
 	private String descripcion;
 	private double precio;
-	private int idSucursal;
+	private String idSucursal;
 
-	public Servicio(int idServicio, String nombre, String descripcion, double precio, int idSucursal) {
+	public Servicio(int idServicio, String nombre, String descripcion, double precio, String idSucursal) {
 		super();
 		this.idServicio = idServicio;
 		this.nombre = nombre;
@@ -55,11 +55,11 @@ public class Servicio implements Serializable {
 		this.precio = precio;
 	}
 
-	public int getIdSucursal() {
+	public String getIdSucursal() {
 		return idSucursal;
 	}
 
-	public void setIdSucursal(int idSucursal) {
+	public void setIdSucursal(String idSucursal) {
 		this.idSucursal = idSucursal;
 	}
 

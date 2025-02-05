@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import modelo.dao.ClienteGuayaquilDAO;
+import modelo.dao.EmpleadoQuitoDAO;
 import modelo.entidades.Cliente;
 
 @WebServlet("/GuayaquilViewController")
@@ -203,6 +204,8 @@ public class GuayaquilViewController extends HttpServlet {
 
 	private void solicitarEmpleadosGuayaquil(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		
+	
 
 		req.getRequestDispatcher("jsp/GYE/empleados/empleados.jsp").forward(req, resp);
 

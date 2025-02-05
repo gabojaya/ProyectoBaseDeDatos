@@ -29,7 +29,7 @@
 			<button type="submit" class="action-btn modify-btn">Guardar
 				Cambios</button>
 			<a
-				href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarClientesQuito"
+				href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarClientesGuayaquil"
 				class="action-btn delete-btn">Cancelar</a>
 		</form>
 	</div>

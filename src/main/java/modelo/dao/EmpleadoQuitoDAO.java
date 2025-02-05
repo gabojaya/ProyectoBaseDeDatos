@@ -42,7 +42,7 @@ public class EmpleadoQuitoDAO {
         return empleados;
     }
     
-    public boolean insertEmpleado(Empleado empleado) throws SQLException {
+    public boolean insertEmpleadoDistribuido(Empleado empleado) throws SQLException {
         boolean insertado = false;
 
         String _SQL_INSERT = "INSERT INTO [CASA].sucursalQuito.dbo.VistaDatosEmpleado (idEmpleado, cedula, nombre, telefono, cargo, idSucursal) VALUES (?, ?, ?, ?, ?, ?)";
@@ -71,7 +71,7 @@ public class EmpleadoQuitoDAO {
         return insertado;
     }
     
-    public boolean updateEmpleado(Empleado empleado) throws SQLException {
+    public boolean updateEmpleadoDistribuido(Empleado empleado) throws SQLException {
         boolean actualizado = false;
 
         String _SQL_UPDATE = "UPDATE [CASA].sucursalQuito.dbo.VistaDatosEmpleado " +
@@ -100,7 +100,7 @@ public class EmpleadoQuitoDAO {
         return actualizado;
     }
     
-    public boolean deleteEmpleado(int idEmpleado) throws SQLException {
+    public boolean deleteEmpleadoDistribuido(int idEmpleado) throws SQLException {
         boolean eliminado = false;
 
         String _SQL_DELETE = "DELETE FROM [CASA].sucursalQuito.dbo.VistaDatosEmpleado WHERE idEmpleado = ?";
@@ -123,4 +123,39 @@ public class EmpleadoQuitoDAO {
 
         return eliminado;
     }
+    
+    public Empleado getEmpleadoById(int idEmpleado) throws SQLException {
+        Empleado empleado = null;
+
+        String _SQL_GET_BY_ID = "SELECT idEmpleado, cedula, nombre, telefono, cargo, idSucursal FROM [CASA].sucursalQuito.dbo.VistaDatosEmpleado WHERE idEmpleado = ?";
+
+        Connection conn = BddConnectionQuito.getConexion();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            pstmt = conn.prepareStatement(_SQL_GET_BY_ID);
+            pstmt.setInt(1, idEmpleado);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                empleado = new Empleado();
+                empleado.setIdEmpleado(rs.getInt("idEmpleado"));
+                empleado.setCedula(rs.getString("cedula"));
+                empleado.setNombre(rs.getString("nombre"));
+                empleado.setTelefono(rs.getString("telefono"));
+                empleado.setCargo(rs.getString("cargo"));
+                empleado.setIdSucursal(rs.getString("idSucursal"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BddConnectionQuito.cerrar(rs);
+            BddConnectionQuito.cerrar(pstmt);
+            BddConnectionQuito.cerrar();
+        }
+
+        return empleado;
+    }
+
 }

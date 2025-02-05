@@ -10,7 +10,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import modelo.dao.ClienteQuitoDAO;
+import modelo.dao.EmpleadoQuitoDAO;
+import modelo.dao.ServicioQuitoDAO;
 import modelo.entidades.Cliente;
+import modelo.entidades.Empleado;
+import modelo.entidades.Servicio;
 
 @WebServlet("/QuitoViewController")
 public class QuitoViewController extends HttpServlet {
@@ -214,15 +218,62 @@ public class QuitoViewController extends HttpServlet {
 	}
 
 	private void solicitarServiciosQuito(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		System.out.println("Entro a solicitar empleados");
+		ServicioQuitoDAO servicioQuito = new ServicioQuitoDAO();
+
+
+			List<Servicio> serviciosQuito;
+			try {
+				serviciosQuito = servicioQuito.getServiciosQuito();
+				
+				if (!serviciosQuito.isEmpty()) {
+					System.out.println("Empleados de Quito:");
+					for (Servicio servicio : serviciosQuito) {
+						System.out.println(servicio.getNombre() + " - " + servicio.getDescripcion() + " - "
+								+ servicio.getPrecio());
+					}
+				}
+				
+				req.setAttribute("serviciosQuito", serviciosQuito);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		req.getRequestDispatcher("jsp/UIO/servicios/servicios.jsp").forward(req, resp);
 		
 	}
 
 	private void solicitarEmpleadosQuito(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		System.out.println("Entro a solicitar empleados");
+		EmpleadoQuitoDAO empleadosQuito = new EmpleadoQuitoDAO();
+
+
+			List<Empleado> empleadoQuito;
+			try {
+				empleadoQuito = empleadosQuito.getEmpleadosQuito();
+				
+				if (!empleadoQuito.isEmpty()) {
+					System.out.println("Empleados de Quito:");
+					for (Empleado empleado : empleadoQuito) {
+						System.out.println(empleado.getIdEmpleado() + " - " + empleado.getCedula() + " - "
+								+ empleado.getNombre() + " - " + empleado.getTelefono() + " - " + " - "
+								+ empleado.getIdSucursal());
+					}
+				}
+				
+				req.setAttribute("empleadoQuito", empleadoQuito);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			
+
 		req.getRequestDispatcher("jsp/UIO/empleados/empleados.jsp").forward(req, resp);
 		
 	}
+	
 
 	private void solicitarHistorialQuito(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
 		req.getRequestDispatcher("jsp/UIO/historial/historial.jsp").forward(req, resp);
