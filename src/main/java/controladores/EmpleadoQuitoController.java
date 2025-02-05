@@ -68,9 +68,11 @@ public class EmpleadoQuitoController extends HttpServlet{
 
 	    EmpleadoQuitoDAO empleadoDAO = new EmpleadoQuitoDAO();
 	    boolean eliminado = false;
-
+	    boolean eliminadoPrivado = false;
 	    try {
 	        eliminado = empleadoDAO.deleteEmpleadoDistribuido(idEmpleado);
+	        eliminadoPrivado = empleadoDAO.deleteDatosPrivadosEmpleado(idEmpleado);
+
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
@@ -129,7 +131,8 @@ public class EmpleadoQuitoController extends HttpServlet{
 	    	    empleadoPrivado.setEmail(email);
 	    	    empleadoPrivado.setDireccion(direccion);
 	    	    empleadoPrivado.setContrasena(contrasena);
-	    	    
+	        
+	    	    boolean insertadoDatos = empleadoQuitoDAO.insertDatosPrivadosEmpleado(empleadoPrivado);
 	    	    
 	    	    
 	            // Redirigir al usuario a una página de éxito (por ejemplo, la lista de clientes)
@@ -168,6 +171,16 @@ public class EmpleadoQuitoController extends HttpServlet{
 	    String salarioStr = req.getParameter("salario");
 	    String contrasena = req.getParameter("contrasena");
 	    String idSucursal = req.getParameter("sucursal");
+	    
+	 // Validar y convertir salario
+	    double salario = 0.0;
+	    try {
+	        salario = Double.parseDouble(salarioStr);
+	    } catch (NumberFormatException e) {
+	        req.setAttribute("error", "El salario ingresado no es válido.");
+	        req.getRequestDispatcher("formularioEmpleado.jsp").forward(req, resp);
+	        return;
+	    }
 
 	    // Crear objeto Cliente con los datos del formulario
 	    Empleado empleado = new Empleado();
@@ -176,11 +189,22 @@ public class EmpleadoQuitoController extends HttpServlet{
 	    empleado.setTelefono(telefono);
 	    empleado.setCargo(cargo);
 	    
+	    DatosPrivadosEmpleado empleadoPrivado = new DatosPrivadosEmpleado();
+	    empleadoPrivado.setIdEmpleado(idEmpleado);
+	    empleadoPrivado.setSalario(salario);
+	    empleadoPrivado.setEmail(email);
+	    empleadoPrivado.setDireccion(direccion);
+	    empleadoPrivado.setContrasena(contrasena);
+	    
+	    
+	    
 	 // Llamar al DAO para actualizar el cliente en la base de datos
 	    EmpleadoQuitoDAO empleadoDAO = new EmpleadoQuitoDAO();
 	    boolean actualizado = false;
+	    boolean actualizadoPrivado = false;
 	    try {
 	        actualizado = empleadoDAO.updateEmpleadoDistribuido(empleado);
+	        actualizadoPrivado = empleadoDAO.updateDatosPrivadosEmpleado(empleadoPrivado);
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
@@ -202,10 +226,16 @@ public class EmpleadoQuitoController extends HttpServlet{
 		
 		EmpleadoQuitoDAO empleadoQDAO = new EmpleadoQuitoDAO();
 		Empleado empleadoQuito;
+		
+		DatosPrivadosEmpleado empleadoDatosQuito;
+		
 		try {
 			empleadoQuito = empleadoQDAO.getEmpleadoById(idEmpleado);
 			System.out.println("Empleado obtenido: " + empleadoQuito.getNombre());
 			req.setAttribute("empleadoQuito", empleadoQuito);
+			empleadoDatosQuito = empleadoQDAO.getDatosPrivadosById(idEmpleado);
+			req.setAttribute("empleadoPrivadoQuito", empleadoDatosQuito);
+			
 			req.getRequestDispatcher("jsp/UIO/empleados/empleadoTabla.jsp").forward(req, resp);
 			
 		} catch (SQLException e) {

@@ -61,7 +61,6 @@
 							<th>Email</th>
 							<th>Salario</th>
 							<th>Contraseña</th>
-							<th>Acciones</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -72,11 +71,6 @@
 								<td>${dato.email}</td>
 								<td>${dato.salario}</td>
 								<td>${dato.contrasena}</td>
-								<td>
-									<button class="action-btn modify-btn"
-										onclick="location.href='editarDatosPrivados.jsp?id=${dato.idEmpleado}'">Modificar</button>
-									<button class="action-btn delete-btn">Eliminar</button>
-								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
