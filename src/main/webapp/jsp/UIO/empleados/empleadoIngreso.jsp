@@ -1,13 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar empleado</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/GYE/tabla.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/UIO/tabla.css">
 </head>
 <body>
     <div class="content">
@@ -17,8 +14,8 @@
                 <tr>
                     <th>Nro</th>
                     <th>Nombre</th>
-                    <th>CÃ©dula</th>
-                    <th>TelÃ©fono</th>
+                    <th>Cédula</th>
+                    <th>Teléfono</th>
                     <th>Cargo</th>
                     <th>Acciones</th>
                 </tr>
@@ -50,8 +47,8 @@
                     <tr>
                         <th>Nro</th>
                         <th>Nombre</th>
-                        <th>CÃ©dula</th>
-                        <th>TelÃ©fono</th>
+                        <th>Cédula</th>
+                        <th>Teléfono</th>
                         <th>Cargo</th>
                     </tr>
                 </thead>

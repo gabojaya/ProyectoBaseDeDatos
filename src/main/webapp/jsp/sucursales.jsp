@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,7 +10,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/sucursales.css">
 </head>
 <body>
-    <h1>¡Bienvenido de nuevo!</h1>
+    <h1>Â¡Bienvenido de nuevo!</h1>
     <div class="contenedor">
         <div>
             <!-- Redirige a quito.html -->

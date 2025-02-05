@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,10 +10,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/GYE/reservas/reservas.css">
 </head>
 <body>
-    <!-- Encabezado con botones de ubicación -->
+    <!-- Encabezado con botones de ubicaciÃ³n -->
     <header class="header">
         <div class="location-buttons">
-            <button type="button" class="location-btn active"
+            <button type="button" class="location-btn"
 				onclick="location.href='${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito'">
 				Quito</button>
             <button type="button" class="location-btn active"

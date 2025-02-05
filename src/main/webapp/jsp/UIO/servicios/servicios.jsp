@@ -13,7 +13,7 @@
             <button type="button" class="location-btn active"
 				onclick="location.href='${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito'">
 				Quito</button>
-            <button type="button" class="location-btn active"
+            <button type="button" class="location-btn "
 				onclick="location.href='${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarInicioGuayaquil'">
 				Guayaquil</button>
         </div>

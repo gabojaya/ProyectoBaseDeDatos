@@ -19,7 +19,7 @@ public class ClienteQuitoDAO {
         List<Cliente> clientesG = new ArrayList<>();
 
         // Consulta SQL para obtener los clientes desde la base de datos remota
-        String _SQL_GET_ALL = "SELECT idCliente, cedula, nombre, telefono, email, idSucursal FROM [ACERDERONNY].sucursalQuito.dbo.ClienteQuito";
+        String _SQL_GET_ALL = "SELECT idCliente, cedula, nombre, telefono, email, idSucursal FROM [CASA].sucursalQuito.dbo.ClienteQuito";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = conn.prepareStatement(_SQL_GET_ALL);
@@ -49,7 +49,7 @@ public class ClienteQuitoDAO {
     public boolean insertClienteQuito(Cliente cliente) throws SQLException {
         boolean insertado = false;
 
-        String _SQL_INSERT = "INSERT INTO [ACERDERONNY].sucursalQuito.dbo.ClienteQuito (idCliente, cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?, ?)";
+        String _SQL_INSERT = "INSERT INTO [CASA].sucursalQuito.dbo.ClienteQuito (idCliente, cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?, ?)";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = null;
@@ -79,7 +79,7 @@ public class ClienteQuitoDAO {
         boolean insertado = false;
 
         // SQL para insertar en la vista VistaCliente
-        String _SQL_INSERT = "INSERT INTO [ACERDERONNY].sucursalQuito.dbo.VistaCliente (cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?)";
+        String _SQL_INSERT = "INSERT INTO [CASA].sucursalQuito.dbo.VistaCliente (cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?)";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = null;
@@ -104,6 +104,95 @@ public class ClienteQuitoDAO {
         return insertado;
     }
     
+    public Cliente getClienteById(int idCliente) throws SQLException {
+        Cliente cliente = null;
+
+        String _SQL_GET_BY_ID = "SELECT idCliente, cedula, nombre, telefono, email, idSucursal FROM [CASA].sucursalQuito.dbo.ClienteQuito WHERE idCliente = ?";
+
+        Connection conn = BddConnectionQuito.getConexion();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            pstmt = conn.prepareStatement(_SQL_GET_BY_ID);
+            pstmt.setInt(1, idCliente);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                cliente = new Cliente();
+                cliente.setIdCliente(rs.getInt("idCliente"));
+                cliente.setCedula(rs.getString("cedula"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setTelefono(rs.getString("telefono"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setIdSucursal(rs.getString("idSucursal"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+        	BddConnectionQuito.cerrar(rs);
+        	BddConnectionQuito.cerrar(pstmt);
+        	BddConnectionQuito.cerrar();
+        }
+
+        return cliente;
+    }
+
+    
+    public boolean updateClienteDistribuido(Cliente cliente) throws SQLException {
+        boolean actualizado = false;
+
+        String _SQL_UPDATE = "UPDATE [CASA].sucursalQuito.dbo.VistaCliente " +
+                             "SET nombre = ?, telefono = ?, email = ? " +
+                             "WHERE idCliente = ?";
+
+        Connection conn = BddConnectionQuito.getConexion();
+        PreparedStatement pstmt = null;
+
+        try {
+            pstmt = conn.prepareStatement(_SQL_UPDATE);
+            pstmt.setString(1, cliente.getNombre());
+            pstmt.setString(2, cliente.getTelefono());
+            pstmt.setString(3, cliente.getEmail());
+            pstmt.setInt(4, cliente.getIdCliente());
+
+            int filasAfectadas = pstmt.executeUpdate();
+            actualizado = (filasAfectadas > 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BddConnectionQuito.cerrar(pstmt);
+            BddConnectionQuito.cerrar();
+        }
+
+        return actualizado;
+    }
+
+    
+    public boolean deleteClienteDistribuido(int idCliente) throws SQLException {
+        boolean eliminado = false;
+
+        String _SQL_DELETE = "DELETE FROM [CASA].sucursalQuito.dbo.VistaCliente WHERE idCliente = ?";
+
+        Connection conn = BddConnectionQuito.getConexion();
+        PreparedStatement pstmt = null;
+
+        try {
+            pstmt = conn.prepareStatement(_SQL_DELETE);
+            pstmt.setInt(1, idCliente);
+
+            int filasAfectadas = pstmt.executeUpdate();
+            eliminado = (filasAfectadas > 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BddConnectionQuito.cerrar(pstmt);
+            BddConnectionQuito.cerrar();
+        }
+
+        return eliminado;
+    }
+   
 	
 	
 }

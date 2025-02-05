@@ -5,16 +5,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cliente</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/GYE/tabla.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cliente</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/jsp/GYE/tabla.css">
 </head>
 <body>
-    <!-- Encabezado -->
-    <header class="header">
+	<!-- Encabezado -->
+	<header class="header">
 		<div class="location-buttons">
-			<button type="button" class="location-btn active"
+			<button type="button" class="location-btn "
 				onclick="location.href='${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito'">
 				Quito</button>
 			<button type="button" class="location-btn active"
@@ -23,19 +24,25 @@
 		</div>
 	</header>
 
-    <!-- Contenedor Principal -->
-    <div class="main-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <nav>
-                <a href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarInicioGuayaquil">Inicio</a>
-                <a href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarReservaGuayaquil">Reservas</a>
-                <a href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarServiciosGuayaquil">Servicios</a>
-                <a href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarClientesGuayaquil" class="active">Clientes</a>
-                <a href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarHistorialGuayaquil">Historial</a>
-                <a href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarEmpleadosGuayaquil">Empleados</a>
-            </nav>
-        </aside>
+	<!-- Contenedor Principal -->
+	<div class="main-container">
+		<!-- Sidebar -->
+		<aside class="sidebar">
+			<nav>
+				<a
+					href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarInicioGuayaquil">Inicio</a>
+				<a
+					href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarReservaGuayaquil">Reservas</a>
+				<a
+					href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarServiciosGuayaquil">Servicios</a>
+				<a
+					href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarClientesGuayaquil"
+					class="active">Clientes</a> <a
+					href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarHistorialGuayaquil">Historial</a>
+				<a
+					href="${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarEmpleadosGuayaquil">Empleados</a>
+			</nav>
+		</aside>
 
 		<!-- Contenido Principal -->
 		<main class="content">
@@ -44,6 +51,10 @@
 				<div class="search-container">
 					<input type="text" placeholder="Buscar Cliente" class="search-bar">
 					<button class="search-btn">O</button>
+				</div>
+				<div class="search-container">
+					<button class="action-btn modify-btn"
+						onclick="window.location.href = `GuayaquilViewController?ruta=solicitarAgregarCliente`">Agregar Cliente</button>
 				</div>
 				<table class="services-table">
 					<thead>
@@ -61,7 +72,7 @@
 							varStatus="status">
 							<tr>
 								<td>${cliente.idCliente}</td>
-								<td>${cliente.nombre}</td>		
+								<td>${cliente.nombre}</td>
 								<td>${cliente.telefono}</td>
 								<td>${cliente.email}</td>
 								<td>
@@ -69,8 +80,12 @@
 								</td>
 								<td>
 									<button class="action-btn modify-btn"
-										onclick="location.href='clienteTabla.html'">Modificar</button>
-									<button class="action-btn delete-btn">Eliminar</button>
+										onclick="window.location.href = `GuayaquilViewController?ruta=solicitarModificarCliente&idCliente=${cliente.idCliente}`">Modificar</button>
+									<a
+									href="GuayaquilViewController?ruta=eliminarCliente&idCliente=${cliente.idCliente}"
+									class="action-btn delete-btn"
+									onclick="return confirm('¿Estás seguro de que quieres eliminar este cliente?');">
+										Eliminar </a>
 								</td>
 							</tr>
 						</c:forEach>

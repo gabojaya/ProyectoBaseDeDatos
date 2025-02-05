@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -21,13 +24,13 @@
             <tbody>
                 <tr>
                     <td>Juan</td>
-                    <td>Corte de cabello + baño</td>
+                    <td>Corte de cabello + baÃ±o</td>
                     <td>$20</td>
                     <td><button class="action-btn modify-btn" onclick="openForm(this)">Modificar</button></td>
                 </tr>
                 <tr>
-                    <td>María</td>
-                    <td>Baño</td>
+                    <td>MarÃ­a</td>
+                    <td>BaÃ±o</td>
                     <td>$30</td>
                     <td><button class="action-btn modify-btn" onclick="openForm(this)">Modificar</button></td>
                 </tr>

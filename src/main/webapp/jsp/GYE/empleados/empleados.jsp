@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,7 @@
     <!-- Encabezado -->
     <header class="header">
         <div class="location-buttons">
-            <button type="button" class="location-btn active"
+            <button type="button" class="location-btn"
 				onclick="location.href='${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito'">
 				Quito</button>
             <button type="button" class="location-btn active"
@@ -44,15 +47,15 @@
             <div class="welcome-section">
                 <div class="search-container">
                     <input type="text" placeholder="Buscar empleado" class="search-bar">
-                    <button class="search-btn">🔍</button>
+                    <button class="search-btn">ð</button>
                 </div>
                 <table class="services-table">
                     <thead>
                         <tr>
                             <th>Nro</th>
                             <th>Nombre</th>
-                            <th>Cédula</th>
-                            <th>Teléfono</th>                            </th>
+                            <th>CÃ©dula</th>
+                            <th>TelÃ©fono</th>                            </th>
                             <th>Cargo</th>
                             <th>Acciones</th>
                         </tr>

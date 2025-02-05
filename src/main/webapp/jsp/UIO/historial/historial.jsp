@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +16,7 @@
             <button type="button" class="location-btn active"
 				onclick="location.href='${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito'">
 				Quito</button>
-            <button type="button" class="location-btn active"
+            <button type="button"  class="location-btn "
 				onclick="location.href='${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarInicioGuayaquil'">
 				Guayaquil</button>
         </div>
@@ -39,7 +42,7 @@
             <div class="welcome-section">
                 <div class="search-container">
                     <input type="text" placeholder="Buscar cliente" class="search-bar">
-                    <button class="search-btn">🔍</button>
+                    <button class="search-btn">ð</button>
                 </div>
                 <table class="services-table">
                     <thead>

@@ -19,9 +19,9 @@
 			<button type="button" class="location-btn active"
 				onclick="location.href='${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito'">
 				Quito</button>
-			<button type="button" class="location-btn active"
+			<button type="button" class="location-btn "
 				onclick="location.href='${pageContext.request.contextPath}/GuayaquilViewController?ruta=solicitarInicioGuayaquil'">
-				Quito</button>
+				Guayaquil</button>
 		</div>
 	</header>
 
@@ -30,13 +30,21 @@
 		<!-- Sidebar -->
 		<aside class="sidebar">
 			<nav>
-				<a href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito">Inicio</a> <a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarReservaQuito">Reservas</a> <a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarServiciosQuito">Servicios</a> <a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarClientesQuito" class="active">Clientes</a> <a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarHistorialQuito">Historial</a> <a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarEmpleadosQuito">Empleados</a> <a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarDatosPrivadosQuito">Datos Privados</a>
+				<a
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito">Inicio</a>
+				<a
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarReservaQuito">Reservas</a>
+				<a
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarServiciosQuito">Servicios</a>
+				<a
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarClientesQuito"
+					class="active">Clientes</a> <a
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarHistorialQuito">Historial</a>
+				<a
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarEmpleadosQuito">Empleados</a>
+				<a
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarDatosPrivadosQuito">Datos
+					Privados</a>
 			</nav>
 		</aside>
 
@@ -48,6 +56,10 @@
 				<div class="search-container">
 					<input type="text" placeholder="Buscar Cliente" class="search-bar">
 					<button class="search-btn">O</button>
+				</div>
+				<div class="search-container">
+					<button class="action-btn modify-btn"
+						onclick="window.location.href = `QuitoViewController?ruta=solicitarAgregarCliente`">Agregar Cliente</button>
 				</div>
 				<table class="services-table">
 					<thead>
@@ -65,7 +77,7 @@
 							varStatus="status">
 							<tr>
 								<td>${cliente.idCliente}</td>
-								<td>${cliente.nombre}</td>		
+								<td>${cliente.nombre}</td>
 								<td>${cliente.telefono}</td>
 								<td>${cliente.email}</td>
 								<td>
@@ -73,8 +85,12 @@
 								</td>
 								<td>
 									<button class="action-btn modify-btn"
-										onclick="location.href='clienteTabla.html'">Modificar</button>
-									<button class="action-btn delete-btn">Eliminar</button>
+										onclick="window.location.href = `QuitoViewController?ruta=solicitarModificarCliente&idCliente=${cliente.idCliente}`">Modificar</button>
+									<a
+									href="QuitoViewController?ruta=eliminarCliente&idCliente=${cliente.idCliente}"
+									class="action-btn delete-btn"
+									onclick="return confirm('¿Estás seguro de que quieres eliminar este cliente?');">
+										Eliminar </a>
 								</td>
 							</tr>
 						</c:forEach>

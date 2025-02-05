@@ -6,25 +6,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Modificar Cliente</title>
+<title>Agregar Cliente</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/jsp/UIO/tabla.css">
 </head>
 <body>
 	<div class="content">
-		<h1 class="welcome-section">Modificar Cliente</h1>
+		<h1 class="welcome-section">Agregar Cliente</h1>
 
-		<form action="QuitoViewController?ruta=modificarCliente" method="POST"
+		<form action="GuayaquilViewController?ruta=agregarCliente" method="POST"
 			class="form-container">
-			<input type="hidden" name="cedula" value="${clienteQuito.cedula}">
-			<input type="hidden" name="idCliente"
-				value="${clienteQuito.idCliente}"> <label for="nombre">Nombre:</label>
-			<input type="text" id="nombre" name="nombre"
-				value="${clienteQuito.nombre}" required> <label
+			<!-- Campo Cedula editable -->
+			<label for="cedula">Cédula:</label> <input type="text" id="cedula"
+				name="cedula" value="${clienteQuito.cedula}" required> <input
+				type="hidden" name="idCliente" value="${clienteQuito.idCliente}">
+
+			<label for="nombre">Nombre:</label> <input type="text" id="nombre"
+				name="nombre" value="${clienteQuito.nombre}" required> <label
 				for="telefono">Teléfono:</label> <input type="text" id="telefono"
 				name="telefono" value="${clienteQuito.telefono}" required> <label
 				for="email">Email:</label> <input type="email" id="email"
-				name="email" value="${clienteQuito.email}" required>
+				name="email" value="${clienteQuito.email}" required> <label
+				for="sucursal">Sucursal:</label> <select id="sucursal"
+				name="sucursal" required>
+				<option value="Quito"
+					>Quito</option>
+				<option value="Guayaquil"
+					>Guayaquil</option>
+			</select>
 
 			<button type="submit" class="action-btn modify-btn">Guardar
 				Cambios</button>

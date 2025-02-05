@@ -1,9 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Página de Inicio</title>
+<title>PÃ¡gina de Inicio</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/jsp/GYE/inicio.css">
 </head>
@@ -11,7 +14,7 @@
 	<!-- Encabezado -->
 	<header class="header">
 		<div class="location-buttons">
-			<button type="button" class="location-btn active"
+			<button type="button" class="location-btn"
 				onclick="location.href='${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito'">
 				Quito</button>
 
@@ -44,7 +47,7 @@
 		<!-- Contenido Principal -->
 		<main class="content">
 			<div class="welcome-section">
-				<h1>¡Bienvenido al sistema!</h1>
+				<h1>Â¡Bienvenido al sistema!</h1>
 				<p>Actualmente se encuentra en la Sucursal de Guayaquil</p>
 			</div>
 		</main>
