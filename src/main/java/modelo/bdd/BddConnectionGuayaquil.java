@@ -12,7 +12,7 @@ public class BddConnectionGuayaquil {
 
     private BddConnectionGuayaquil() {
         
-        String servidor = "localhost";
+        String servidor = "LUZUJ\\MSSQLSERVER1";
         String puerto = "1433"; 
         String database = "sucursalGuayaquil";
         String usuario = "sa"; 

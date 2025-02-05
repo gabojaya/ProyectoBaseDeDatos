@@ -19,7 +19,7 @@ public class ClienteGuayaquilDAO {
         List<Cliente> clientesG = new ArrayList<>();
 
         // Consulta SQL para obtener los clientes desde la base de datos remota
-        String _SQL_GET_ALL = "SELECT idCliente, cedula, nombre, telefono, email, idSucursal FROM [CASA].sucursalGuayaquil.dbo.ClienteGuayaquil";
+        String _SQL_GET_ALL = "SELECT idCliente, cedula, nombre, telefono, email, idSucursal FROM [LUZUJ\\MSSQLSERVER1].sucursalGuayaquil.dbo.ClienteGuayaquil";
 
         Connection conn = BddConnectionGuayaquil.getConexion();
         PreparedStatement pstmt = conn.prepareStatement(_SQL_GET_ALL);
@@ -49,7 +49,7 @@ public class ClienteGuayaquilDAO {
     public boolean insertClienteGuayaquil(Cliente cliente) throws SQLException {
         boolean insertado = false;
 
-        String _SQL_INSERT = "INSERT INTO [CASA].sucursalGuayaquil.dbo.ClienteGuayaquil (idCliente, cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?, ?)";
+        String _SQL_INSERT = "INSERT INTO [LUZUJ\\MSSQLSERVER1].sucursalGuayaquil.dbo.ClienteGuayaquil (idCliente, cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?, ?)";
 
         Connection conn = BddConnectionGuayaquil.getConexion();
         PreparedStatement pstmt = null;
@@ -79,7 +79,7 @@ public class ClienteGuayaquilDAO {
         boolean insertado = false;
 
         // SQL para insertar en la vista VistaCliente
-        String _SQL_INSERT = "INSERT INTO [CASA].[sucursalGuayaquil].[dbo].[VistaCliente] (cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?)";
+        String _SQL_INSERT = "INSERT INTO [LUZUJ\\MSSQLSERVER1].[sucursalGuayaquil].[dbo].[VistaCliente] (cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?)";
 
         Connection conn = BddConnectionGuayaquil.getConexion();
         PreparedStatement pstmt = null;
@@ -108,7 +108,7 @@ public class ClienteGuayaquilDAO {
     public Cliente getClienteById(int idCliente) throws SQLException {
         Cliente cliente = null;
 
-        String _SQL_GET_BY_ID = "SELECT idCliente, cedula, nombre, telefono, email, idSucursal FROM [CASA].sucursalGuayaquil.dbo.ClienteGuayaquil WHERE idCliente = ?";
+        String _SQL_GET_BY_ID = "SELECT idCliente, cedula, nombre, telefono, email, idSucursal FROM [LUZUJ\\MSSQLSERVER1].sucursalGuayaquil.dbo.ClienteGuayaquil WHERE idCliente = ?";
 
         Connection conn = BddConnectionGuayaquil.getConexion();
         PreparedStatement pstmt = null;
@@ -143,7 +143,7 @@ public class ClienteGuayaquilDAO {
     public boolean updateClienteDistribuido(Cliente cliente) throws SQLException {
         boolean actualizado = false;
 
-        String _SQL_UPDATE = "UPDATE [CASA].sucursalGuayaquil.dbo.VistaCliente " +
+        String _SQL_UPDATE = "UPDATE [LUZUJ\\MSSQLSERVER1].sucursalGuayaquil.dbo.VistaCliente " +
                              "SET nombre = ?, telefono = ?, email = ? " +
                              "WHERE idCliente = ?";
 
@@ -173,7 +173,7 @@ public class ClienteGuayaquilDAO {
     public boolean deleteClienteDistribuido(int idCliente) throws SQLException {
         boolean eliminado = false;
 
-        String _SQL_DELETE = "DELETE FROM [CASA].sucursalGuayaquil.dbo.VistaCliente WHERE idCliente = ?";
+        String _SQL_DELETE = "DELETE FROM [LUZUJ\\MSSQLSERVER1].sucursalGuayaquil.dbo.VistaCliente WHERE idCliente = ?";
 
         Connection conn = BddConnectionGuayaquil.getConexion();
         PreparedStatement pstmt = null;
