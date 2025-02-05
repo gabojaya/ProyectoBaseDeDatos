@@ -13,6 +13,7 @@ import modelo.dao.ClienteQuitoDAO;
 import modelo.dao.EmpleadoQuitoDAO;
 import modelo.dao.ServicioQuitoDAO;
 import modelo.entidades.Cliente;
+import modelo.entidades.DatosPrivadosEmpleado;
 import modelo.entidades.Empleado;
 import modelo.entidades.Servicio;
 
@@ -213,6 +214,28 @@ public class QuitoViewController extends HttpServlet {
 	}
 
 	private void solicitarDatosPrivadosQuito(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		System.out.println("Entro a solicitar datos privados");
+		EmpleadoQuitoDAO servicioQuito = new EmpleadoQuitoDAO();
+
+
+			List<DatosPrivadosEmpleado> datosPrivados;
+			try {
+				datosPrivados = servicioQuito.getAllDatosPrivados();
+				
+				if (!datosPrivados.isEmpty()) {
+					System.out.println("Servicios de Quito:");
+					for (DatosPrivadosEmpleado datos : datosPrivados) {
+						System.out.println(datos.getDireccion() + " - " + datos.getIdEmpleado() + " - "
+								+ datos.getSalario());
+					}
+				}
+				
+				req.setAttribute("datosPrivados", datosPrivados);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		req.getRequestDispatcher("jsp/UIO/privado/privado.jsp").forward(req, resp);
 		
 	}

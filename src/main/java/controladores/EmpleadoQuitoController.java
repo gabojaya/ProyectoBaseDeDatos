@@ -51,10 +51,18 @@ public class EmpleadoQuitoController extends HttpServlet{
 		case "agregarEmpleado":
 			this.agregarEmpleado(req, resp);
 			break;
+		case "mostrarDatosPrivadosEmpleado":
+			this.mostrarDatosPrivadosEmpleado(req, resp);
+			break;
 
 		}
 	}
 	
+	private void mostrarDatosPrivadosEmpleado(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private void eliminarEmpleado(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	    int idEmpleado = Integer.parseInt(req.getParameter("idEmpleado"));
 
