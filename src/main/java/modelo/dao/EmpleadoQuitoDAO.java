@@ -17,7 +17,7 @@ public class EmpleadoQuitoDAO {
     public List<Empleado> getEmpleadosQuito() throws SQLException {
         List<Empleado> empleados = new ArrayList<>();
 
-        String _SQL_GET_ALL = "SELECT idEmpleado, cedula, nombre, telefono, cargo, idSucursal FROM [ACERDERONNY].sucursalQuito.dbo.VistaDatosEmpleado";
+        String _SQL_GET_ALL = "SELECT idEmpleado, cedula, nombre, telefono, cargo, idSucursal FROM [ACERDERONNY].sucursalQuito.dbo.DatosEmpleadoQuito";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = conn.prepareStatement(_SQL_GET_ALL);

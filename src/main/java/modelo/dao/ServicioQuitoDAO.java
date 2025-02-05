@@ -18,7 +18,7 @@ public class ServicioQuitoDAO {
 	    public List<Servicio> getServiciosQuito() throws SQLException {
 	        List<Servicio> servicios = new ArrayList<>();
 
-	        String _SQL_GET_ALL = "SELECT idServicio, nombre, descripcion, precio, idSucursal FROM [CASA].sucursalQuito.dbo.ServicioQuito";
+	        String _SQL_GET_ALL = "SELECT idServicio, nombre, descripcion, precio, idSucursal FROM [ACERDERONNY].sucursalQuito.dbo.ServicioQuito";
 
 	        Connection conn = BddConnectionQuito.getConexion();
 	        PreparedStatement pstmt = conn.prepareStatement(_SQL_GET_ALL);
@@ -45,7 +45,7 @@ public class ServicioQuitoDAO {
 	    public boolean insertServicioDistribuido(Servicio servicio) throws SQLException {
 	        boolean insertado = false;
 
-	        String _SQL_INSERT = "INSERT INTO [CASA].sucursalQuito.dbo.VistaServicio (nombre, descripcion, precio, idSucursal) VALUES (?, ?, ?, ?)";
+	        String _SQL_INSERT = "INSERT INTO [ACERDERONNY].sucursalQuito.dbo.VistaServicio (nombre, descripcion, precio, idSucursal) VALUES (?, ?, ?, ?)";
 
 	        Connection conn = BddConnectionQuito.getConexion();
 	        PreparedStatement pstmt = null;
@@ -72,7 +72,7 @@ public class ServicioQuitoDAO {
 	    public boolean updateServicioDistribuido(Servicio servicio) throws SQLException {
 	        boolean actualizado = false;
 
-	        String _SQL_UPDATE = "UPDATE [CASA].sucursalQuito.dbo.VistaServicio " +
+	        String _SQL_UPDATE = "UPDATE [ACERDERONNY].sucursalQuito.dbo.VistaServicio " +
 	                             "SET nombre = ?, descripcion = ?, precio = ? " +
 	                             "WHERE idServicio = ?";
 
@@ -101,7 +101,7 @@ public class ServicioQuitoDAO {
 	    public boolean deleteServicioDistribuido(int idServicio) throws SQLException {
 	        boolean eliminado = false;
 
-	        String _SQL_DELETE = "DELETE FROM [CASA].sucursalQuito.dbo.VistaServicio WHERE idServicio = ?";
+	        String _SQL_DELETE = "DELETE FROM [ACERDERONNY].sucursalQuito.dbo.VistaServicio WHERE idServicio = ?";
 
 	        Connection conn = BddConnectionQuito.getConexion();
 	        PreparedStatement pstmt = null;
@@ -125,7 +125,7 @@ public class ServicioQuitoDAO {
 	    public Servicio getServicioById(int idServicio) throws SQLException {
 	        Servicio servicio = null;
 
-	        String _SQL_GET_BY_ID = "SELECT idServicio, nombre, descripcion, precio, idSucursal FROM [CASA].sucursalQuito.dbo.VistaServicio WHERE idServicio = ?";
+	        String _SQL_GET_BY_ID = "SELECT idServicio, nombre, descripcion, precio, idSucursal FROM [ACERDERONNY].sucursalQuito.dbo.VistaServicio WHERE idServicio = ?";
 
 	        Connection conn = BddConnectionQuito.getConexion();
 	        PreparedStatement pstmt = null;
