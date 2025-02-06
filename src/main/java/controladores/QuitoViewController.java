@@ -14,12 +14,14 @@ import modelo.dao.EmpleadoQuitoDAO;
 import modelo.dao.MascotaQuitoDAO;
 import modelo.dao.ReservaQuitoDAO;
 import modelo.dao.ServicioQuitoDAO;
+import modelo.dao.SucursalDAO;
 import modelo.entidades.Cliente;
 import modelo.entidades.DatosPrivadosEmpleado;
 import modelo.entidades.Empleado;
 import modelo.entidades.Mascota;
 import modelo.entidades.Reserva;
 import modelo.entidades.Servicio;
+import modelo.entidades.Sucursal;
 
 @WebServlet("/QuitoViewController")
 public class QuitoViewController extends HttpServlet {
@@ -89,8 +91,9 @@ public class QuitoViewController extends HttpServlet {
 		case "verMascotas":
 			this.verMascotas(req, resp);
 			break;
-			
-		
+		case "solicitarTablaSucursales":
+			this.solicitarTablaSucursales(req, resp);
+			break;
 		}
 	}
 	
@@ -416,9 +419,34 @@ public class QuitoViewController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+     
 		
 	}
 	
+	private void solicitarTablaSucursales(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("Entro a tabla sucursales: ");
+		SucursalDAO sucursalDAO = new SucursalDAO();
+		
+		try {
+			List<Sucursal> tablaSucursal = sucursalDAO.getSucursales();
+			
+            if (!tablaSucursal.isEmpty()) {
+                System.out.println("Sucursales:");
+                for (Sucursal sucursal : tablaSucursal) {
+                    System.out.println(sucursal.getIdSucursal() + " - " + sucursal.getNombre() + " - " + sucursal.getDireccion());
+                }
+            }
+            
+            req.setAttribute("tablaSucursal", tablaSucursal);
+            req.getRequestDispatcher("jsp/UIO/sucursales.jsp").forward(req, resp);
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+            
+		
+	}
 	
 
 }

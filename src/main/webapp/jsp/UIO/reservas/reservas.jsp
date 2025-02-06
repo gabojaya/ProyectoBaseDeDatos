@@ -39,6 +39,7 @@
 
     <div class="main-container">
         <aside class="sidebar">
+<<<<<<< Updated upstream
             <nav>
                 <a href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito">Inicio</a>
                 <a href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarReservaQuito" class="active">Reservas</a>
@@ -49,6 +50,19 @@
                 <a href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarDatosPrivadosQuito">Datos Privados</a>
             </nav>
         </aside>
+=======
+			<nav>
+				<a href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarInicioQuito">Inicio</a> 
+				<a href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarReservaQuito" class="active">Reservas</a>
+				<a href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarServiciosQuito">Servicios</a> 
+				<a href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarClientesQuito">Clientes</a> 
+				<a href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarHistorialQuito">Historial</a> 
+				<a href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarEmpleadosQuito">Empleados</a> 
+				<a href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarDatosPrivadosQuito">Datos Privados</a>
+				<a href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarTablaSucursales">Sucursales</a>
+			</nav>
+		</aside>
+>>>>>>> Stashed changes
 
         <main class="content">
             <section class="reservation-section">

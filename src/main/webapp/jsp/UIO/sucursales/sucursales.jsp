@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Empleados</title>
+<title>Sucursales</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/jsp/UIO/tabla.css">
 </head>
@@ -33,60 +33,55 @@
 				<a
 					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarReservaQuito">Reservas</a>
 				<a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarServiciosQuito">Servicios</a>
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarServiciosQuito">Servicios</a> 
 				<a
 					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarClientesQuito">Clientes</a>
 				<a
 					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarHistorialQuito">Historial</a>
 				<a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarEmpleadosQuito"
-					class="active">Empleados</a> <a
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarEmpleadosQuito">Empleados</a>
+				<a
 					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarDatosPrivadosQuito">Datos
 					Privados</a>
 				<a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarTablaSucursales">Sucursales</a>
+					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarTablaSucursales" class="active">Sucursales</a>
 			</nav>
 		</aside>
 
 		<!-- Contenido Principal -->
 		<main class="content">
-
 			<div class="welcome-section">
+				<h1>Servicios</h1>
 				<div class="search-container">
-					<input type="text" placeholder="Buscar empleado" class="search-bar">
-					<button class="search-btn">🔍</button>
+					<input type="text" placeholder="Buscar Servicio" class="search-bar">
+					<button class="search-btn">ð</button>
 				</div>
 				<div class="search-container">
 					<button class="action-btn modify-btn"
-						onclick="window.location.href = `EmpleadoQuitoController?ruta=solicitarAgregarEmpleado`">Agregar Empleado</button>
+						onclick="window.location.href = `ServicioQuitoController?ruta=solicitarTablaSucursales`">Agregar Servicios</button>
 				</div>
 				<table class="services-table">
 					<thead>
 						<tr>
-							<th>Nro</th>
 							<th>Nombre</th>
-							<th>Cédula</th>
-							<th>Teléfono</th>
-							<th>Cargo</th>
+							<th>Descripción</th>
+							<th>Precio</th>
 							<th>Acciones</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="empleado" items="${empleadoQuito}"
-							varStatus="status">
+						<c:forEach var="servicio" items="${serviciosQuito}">
 							<tr>
-								<td>${status.index + 1}</td>
-								<td>${empleado.nombre}</td>
-								<td>${empleado.cedula}</td>
-								<td>${empleado.telefono}</td>
-								<td>${empleado.cargo}</td>
+								<td>${servicio.nombre}</td>
+								<td>${servicio.descripcion}</td>
+								<td>${servicio.precio}</td>
 								<td>
 									<button class="action-btn modify-btn"
-										onclick="window.location.href = `EmpleadoQuitoController?ruta=solicitarModificarEmpleado&idEmpleado=${empleado.idEmpleado}`">Modificar</button>
+										onclick="window.location.href = `ServicioQuitoController?ruta=solicitarModificarServicio&idServicio=${servicio.idServicio}`">Modificar</button>
 									<a
-									href="EmpleadoQuitoController?ruta=eliminarEmpleado&idEmpleado=${empleado.idEmpleado}"
+									href="ServicioQuitoController?ruta=eliminarServicio&idServicio=${servicio.idServicio}"
 									class="action-btn delete-btn"
-									onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">
+									onclick="return confirm('¿Estás seguro de que quieres eliminar este servicio?');">
 										Eliminar </a>
 								</td>
 							</tr>
@@ -94,9 +89,6 @@
 					</tbody>
 				</table>
 			</div>
-
-
-
 		</main>
 	</div>
 </body>
