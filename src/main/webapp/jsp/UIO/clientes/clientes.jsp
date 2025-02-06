@@ -59,7 +59,8 @@
 				</div>
 				<div class="search-container">
 					<button class="action-btn modify-btn"
-						onclick="window.location.href = `QuitoViewController?ruta=solicitarAgregarCliente`">Agregar Cliente</button>
+						onclick="window.location.href = `QuitoViewController?ruta=solicitarAgregarCliente`">Agregar
+						Cliente</button>
 				</div>
 				<table class="services-table">
 					<thead>
@@ -81,8 +82,11 @@
 								<td>${cliente.telefono}</td>
 								<td>${cliente.email}</td>
 								<td>
-									<button class="action-btn pet-btn" onclick="location.href='/UIO/mascota/mascota.html'"">Ver</button>
+									<button class="action-btn pet-btn"
+										onclick="window.location.href = 'QuitoViewController?ruta=verMascotas&idCliente=${cliente.idCliente}'">
+										Ver</button>
 								</td>
+
 								<td>
 									<button class="action-btn modify-btn"
 										onclick="window.location.href = `QuitoViewController?ruta=solicitarModificarCliente&idCliente=${cliente.idCliente}`">Modificar</button>
