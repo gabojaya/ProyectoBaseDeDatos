@@ -11,11 +11,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import modelo.dao.ClienteQuitoDAO;
 import modelo.dao.EmpleadoQuitoDAO;
+import modelo.dao.MascotaQuitoDAO;
 import modelo.dao.ReservaQuitoDAO;
 import modelo.dao.ServicioQuitoDAO;
 import modelo.entidades.Cliente;
 import modelo.entidades.DatosPrivadosEmpleado;
 import modelo.entidades.Empleado;
+import modelo.entidades.Mascota;
 import modelo.entidades.Reserva;
 import modelo.entidades.Servicio;
 
@@ -85,11 +87,43 @@ public class QuitoViewController extends HttpServlet {
 		case "agregarCliente":
 			this.agregarCliente(req, resp);
 			break;
+		case "verMascotas":
+			this.verMascotas(req, resp);
+			break;
 			
 		
 		}
 	}
 	
+	private void verMascotas(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+		System.out.println("Entro a solicitar empleados");
+		 int idCliente = Integer.parseInt(req.getParameter("idCliente"));
+		MascotaQuitoDAO mascotaQuito = new MascotaQuitoDAO();
+
+
+			List<Mascota> mascotasQuito;
+			try {
+				mascotasQuito = mascotaQuito.getMascotasPorCliente(idCliente);
+				
+				if (!mascotasQuito.isEmpty()) {
+					System.out.println("Servicios de Quito:");
+					for (Mascota mascota : mascotasQuito) {
+						System.out.println(mascota.getNombre() + " - " + mascota.getRaza() + " - "
+								+ mascota.getEspecie());
+					}
+				}
+				
+				req.setAttribute("mascotasQuito", mascotasQuito);
+				req.setAttribute("idCliente", idCliente);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		req.getRequestDispatcher("jsp/UIO/mascota/mascota.jsp").forward(req, resp);
+		
+	}
+
 	private void agregarCliente(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		 // Obtener los parámetros del formulario
 	    String cedula = req.getParameter("cedula");

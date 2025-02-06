@@ -15,9 +15,12 @@ public class Mascota implements Serializable{
 	private String raza;
 	private int edad;
 	private int idCliente;
-	private int idSucursal;
+	private String idSucursal;
 	
-	public Mascota(int idMascota, String nombre, String especie, String raza, int edad, int idCliente, int idSucursal) {
+	
+	
+	public Mascota(int idMascota, String nombre, String especie, String raza, int edad, int idCliente,
+			String idSucursal) {
 		super();
 		this.idMascota = idMascota;
 		this.nombre = nombre;
@@ -63,12 +66,14 @@ public class Mascota implements Serializable{
 	public void setIdCliente(int idCliente) {
 		this.idCliente = idCliente;
 	}
-	public int getIdSucursal() {
+	public String getIdSucursal() {
 		return idSucursal;
 	}
-	public void setIdSucursal(int idSucursal) {
+	public void setIdSucursal(String idSucursal) {
 		this.idSucursal = idSucursal;
 	}
+	
+	
 	
 	
 }
