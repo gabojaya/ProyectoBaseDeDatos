@@ -76,7 +76,9 @@
 								<td>${cliente.telefono}</td>
 								<td>${cliente.email}</td>
 								<td>
-									<button class="action-btn view-btn">Ver</button>
+									<button class="action-btn pet-btn"
+										onclick="window.location.href = 'GuayaquilViewController?ruta=verMascotas&idCliente=${cliente.idCliente}'">
+										Ver</button>
 								</td>
 								<td>
 									<button class="action-btn modify-btn"

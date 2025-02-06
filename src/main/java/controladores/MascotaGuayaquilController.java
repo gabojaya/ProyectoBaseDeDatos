@@ -2,9 +2,6 @@ package controladores;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
-
-import com.google.gson.Gson;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -12,14 +9,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import modelo.dao.EmpleadoQuitoDAO;
-import modelo.dao.MascotaQuitoDAO;
+import modelo.dao.EmpleadoGuayaquilDAO;
+import modelo.dao.MascotaGuayaquilDAO;
 import modelo.entidades.DatosPrivadosEmpleado;
 import modelo.entidades.Empleado;
 import modelo.entidades.Mascota;
 
-@WebServlet("/MascotaController")
-public class MascotaController extends HttpServlet {
+@WebServlet("/MascotaGuayaquilController")
+public class MascotaGuayaquilController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -54,31 +51,8 @@ public class MascotaController extends HttpServlet {
 		case "solicitarAgregarMascota":
 			this.solicitarAgregarMascota(req, resp);
 			break;
-		case "getMascotasPorCliente":
-			this.getMascotasPorCliente(req, resp);
-			break;
 
 		}
-	}
-
-	// Método en el controlador para obtener las mascotas por cliente
-	private void getMascotasPorCliente(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	    try {
-	        int idCliente = Integer.parseInt(req.getParameter("idCliente"));
-	        
-	        MascotaQuitoDAO mascotaDAO = new MascotaQuitoDAO();
-	        List<Mascota> mascotas = mascotaDAO.getMascotasPorCliente(idCliente);
-	        
-	        // Convertir la lista de mascotas a JSON
-	        String json = new Gson().toJson(mascotas);
-	        
-	        // Enviar la respuesta como JSON
-	        resp.setContentType("application/json");
-	        resp.getWriter().write(json);
-	    } catch (SQLException e) {
-	        e.printStackTrace();  // Manejo de excepciones
-	        resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-	    }
 	}
 
 	private void modificarMascota(HttpServletRequest req, HttpServletResponse resp)
@@ -103,13 +77,13 @@ public class MascotaController extends HttpServlet {
 		mascota.setIdSucursal(idSucursal);
 
 		// Usar el DAO para actualizar la mascota en la base de datos
-		MascotaQuitoDAO mascotaDAO = new MascotaQuitoDAO();
+		MascotaGuayaquilDAO mascotaDAO = new MascotaGuayaquilDAO();
 		try {
 			boolean actualizado = mascotaDAO.updateMascotaDistribuido(mascota);
 
 			// Redirigir según el resultado de la actualización
 			if (actualizado) {
-				resp.sendRedirect("QuitoViewController?ruta=verMascotas&idCliente=" + idCliente);
+				resp.sendRedirect("GuayaquilViewController?ruta=verMascotas&idCliente=" + idCliente);
 			} else {
 				// Mostrar un mensaje de error si no se pudo actualizar
 				req.setAttribute("error", "No se pudo actualizar la mascota.");
@@ -127,7 +101,7 @@ public class MascotaController extends HttpServlet {
 			throws ServletException, IOException {
 		int idCliente = Integer.parseInt(req.getParameter("idCliente"));
 		req.setAttribute("idCliente", idCliente);
-		req.getRequestDispatcher("jsp/UIO/mascota/mascotaIngreso.jsp").forward(req, resp);
+		req.getRequestDispatcher("jsp/GYE/mascota/mascotaIngreso.jsp").forward(req, resp);
 
 	}
 
@@ -150,14 +124,14 @@ public class MascotaController extends HttpServlet {
 			nuevaMascota.setIdCliente(idCliente);
 			nuevaMascota.setIdSucursal(idSucursal);
 			// Insertar en la BD
-			MascotaQuitoDAO mascotaDAO = new MascotaQuitoDAO();
+			MascotaGuayaquilDAO mascotaDAO = new MascotaGuayaquilDAO();
 			boolean insertado = mascotaDAO.insertMascotaDistribuido(nuevaMascota);
 
 			if (insertado) {
-				resp.sendRedirect("QuitoViewController?ruta=verMascotas&idCliente=" + idCliente);
+				resp.sendRedirect("GuayaquilViewController?ruta=verMascotas&idCliente=" + idCliente);
 			} else {
 				req.setAttribute("errorMensaje", "Error al agregar la mascota.");
-				RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/UIO/agregarMascota.jsp");
+				RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/GYE/agregarMascota.jsp");
 				dispatcher.forward(req, resp);
 			}
 		} catch (Exception e) {
@@ -174,14 +148,14 @@ public class MascotaController extends HttpServlet {
 			int idCliente = Integer.parseInt(req.getParameter("idCliente")); // Para redireccionar correctamente
 
 			// Llamar al método DAO para eliminar
-			MascotaQuitoDAO mascotaDAO = new MascotaQuitoDAO();
+			MascotaGuayaquilDAO mascotaDAO = new MascotaGuayaquilDAO();
 			boolean eliminado = mascotaDAO.deleteMascotaDistribuido(idMascota);
 
 			if (eliminado) {
-				resp.sendRedirect("QuitoViewController?ruta=verMascotas&idCliente=" + idCliente);
+				resp.sendRedirect("GuayaquilViewController?ruta=verMascotas&idCliente=" + idCliente);
 			} else {
 				req.setAttribute("errorMensaje", "Error al eliminar la mascota.");
-				RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/UIO/listaMascotas.jsp");
+				RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/GYE/listaMascotas.jsp");
 				dispatcher.forward(req, resp);
 			}
 		} catch (Exception e) {
@@ -194,15 +168,15 @@ public class MascotaController extends HttpServlet {
 			throws ServletException, IOException {
 		int idMascota = Integer.parseInt(req.getParameter("idMascota"));
 
-		MascotaQuitoDAO mascotaQDAO = new MascotaQuitoDAO();
-		Mascota mascotaQuito;
+		MascotaGuayaquilDAO mascotaGDAO = new MascotaGuayaquilDAO();
+		Mascota mascotaGuayaquil;
 
 		try {
-			mascotaQuito = mascotaQDAO.getMascotaPorId(idMascota);
+			mascotaGuayaquil = mascotaGDAO.getMascotaPorId(idMascota);
 
-			req.setAttribute("mascota", mascotaQuito);
+			req.setAttribute("mascota", mascotaGuayaquil);
 
-			req.getRequestDispatcher("jsp/UIO/mascota/mascotaEdit.jsp").forward(req, resp);
+			req.getRequestDispatcher("jsp/GYE/mascota/mascotaEdit.jsp").forward(req, resp);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
