@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/sucursales.css">
 </head>
 <body>
-    <h1>Â¡Bienvenido de nuevo!</h1>
+    <h1>¡Bienvenido de nuevo!</h1>
     <div class="contenedor">
         <div>
             <!-- Redirige a quito.html -->

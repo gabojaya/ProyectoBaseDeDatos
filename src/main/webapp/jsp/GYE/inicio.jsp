@@ -47,7 +47,7 @@
 		<!-- Contenido Principal -->
 		<main class="content">
 			<div class="welcome-section">
-				<h1>Â¡Bienvenido al sistema!</h1>
+				<h1>¡Bienvenido al sistema!</h1>
 				<p>Actualmente se encuentra en la Sucursal de Guayaquil</p>
 			</div>
 		</main>
