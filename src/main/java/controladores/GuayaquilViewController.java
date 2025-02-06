@@ -12,9 +12,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import modelo.dao.ClienteGuayaquilDAO;
 import modelo.dao.ServicioGuayaquilDAO;
 import modelo.dao.EmpleadoGuayaquilDAO;
+import modelo.dao.MascotaGuayaquilDAO;
 import modelo.dao.ReservaGuayaquilDAO;
 import modelo.entidades.Cliente;
 import modelo.entidades.Empleado;
+import modelo.entidades.Mascota;
 import modelo.entidades.Reserva;
 import modelo.entidades.Servicio;
 
@@ -77,10 +79,42 @@ public class GuayaquilViewController extends HttpServlet {
 		case "agregarCliente":
 			this.agregarCliente(req, resp);
 			break;
+		case "verMascotas":
+			this.verMascotas(req, resp);
+			break;
 
 		}
 	}
 
+	private void verMascotas(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+		System.out.println("Entro a solicitar empleados");
+		 int idCliente = Integer.parseInt(req.getParameter("idCliente"));
+		MascotaGuayaquilDAO mascotaGuayaquil = new MascotaGuayaquilDAO();
+
+
+			List<Mascota> mascotasGuayaquil;
+			try {
+				mascotasGuayaquil = mascotaGuayaquil.getMascotasPorCliente(idCliente);
+				
+				if (!mascotasGuayaquil.isEmpty()) {
+					System.out.println("Servicios de Guayaquil:");
+					for (Mascota mascota : mascotasGuayaquil) {
+						System.out.println(mascota.getNombre() + " - " + mascota.getRaza() + " - "
+								+ mascota.getEspecie());
+					}
+				}
+				
+				req.setAttribute("mascotasGuayaquil", mascotasGuayaquil);
+				req.setAttribute("idCliente", idCliente);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		req.getRequestDispatcher("jsp/GYE/mascota/mascota.jsp").forward(req, resp);
+		
+	}
+	
 	private void agregarCliente(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// Obtener los parámetros del formulario
 		String cedula = req.getParameter("cedula");
