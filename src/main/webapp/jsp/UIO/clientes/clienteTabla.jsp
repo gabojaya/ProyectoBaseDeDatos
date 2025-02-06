@@ -10,36 +10,38 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/UIO/tabla.css">
 </head>
 <body>
-    <!-- Encabezado -->
-    <header class="header">
-        <div class="location-buttons">
-            <button type="button" class="location-btn" onclick="location.href='/UIO/inicio.html'">Quito</button>
-            <button type="button" class="location-btn" onclick="location.href='/GYE/inicio.html'">Guayaquil</button>
-        </div>
-    </header>
 
     <!-- Contenido Principal -->
     <div class="content">
         <div class="welcome-section">
-            <h1>Modificar Cliente</h1>
+            <h1 class="welcome-section">Modificar Cliente</h1>
 
             <form action="QuitoViewController?ruta=modificarCliente" method="POST" class="form-container">
                 <input type="hidden" name="cedula" value="${clienteQuito.cedula}">
                 <input type="hidden" name="idCliente" value="${clienteQuito.idCliente}">
 
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" value="${clienteQuito.nombre}" required>
+                <div>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" value="${clienteQuito.nombre}" required>
+                </div>
 
-                <label for="telefono">Teléfono:</label>
-                <input type="text" id="telefono" name="telefono" value="${clienteQuito.telefono}" required>
+                <div>
+                    <label for="telefono">Teléfono:</label>
+                    <input type="text" id="telefono" name="telefono" value="${clienteQuito.telefono}" required>
+                </div>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="${clienteQuito.email}" required>
+                <div >
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="${clienteQuito.email}" required>
+                </div>
 
-                <button type="submit" class="action-btn modify-btn">Guardar Cambios</button>
-                <a href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarClientesQuito" class="action-btn delete-btn">Cancelar</a>
+                <div>
+                    <button type="submit" class=" buttons-container save-button">Guardar Cambios</button>
+                    <a href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarClientesQuito" class="buttons-container cancel-button">Cancelar</a>
+                </div>
             </form>
         </div>
     </div>
+
 </body>
 </html>
