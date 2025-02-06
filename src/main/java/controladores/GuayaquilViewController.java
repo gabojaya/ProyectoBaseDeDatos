@@ -179,7 +179,7 @@ public class GuayaquilViewController extends HttpServlet {
 			resp.sendRedirect("GuayaquilViewController?ruta=solicitarClientesGuayaquil");
 		} else {
 			req.setAttribute("error", "No se pudo eliminar el cliente.");
-			req.getRequestDispatcher("/jsp/UIO/listaClientes.jsp").forward(req, resp);
+			req.getRequestDispatcher("/jsp/GYE/listaClientes.jsp").forward(req, resp);
 		}
 	}
 
@@ -212,7 +212,7 @@ public class GuayaquilViewController extends HttpServlet {
 			resp.sendRedirect("GuayaquilViewController?ruta=solicitarClientesGuayaquil");
 		} else {
 			req.setAttribute("error", "No se pudo actualizar el cliente.");
-			req.getRequestDispatcher("/jsp/UIO/modificarCliente.jsp").forward(req, resp);
+			req.getRequestDispatcher("/jsp/GYE/modificarCliente.jsp").forward(req, resp);
 		}
 
 	}
@@ -222,11 +222,11 @@ public class GuayaquilViewController extends HttpServlet {
 
 		int idCliente = Integer.parseInt(req.getParameter("idCliente"));
 		ClienteGuayaquilDAO clienteGDAO = new ClienteGuayaquilDAO();
-		Cliente clienteQuito;
+		Cliente clienteGuayaquil;
 		try {
-			clienteQuito = clienteGDAO.getClienteById(idCliente);
-			System.out.println("Cliente obtenido: " + clienteQuito.getNombre());
-			req.setAttribute("clienteQuito", clienteQuito);
+			clienteGuayaquil = clienteGDAO.getClienteById(idCliente);
+			System.out.println("Cliente obtenido: " + clienteGuayaquil.getNombre());
+			req.setAttribute("clienteGuayaquil", clienteGuayaquil);
 			req.getRequestDispatcher("jsp/GYE/clientes/clienteTabla.jsp").forward(req, resp);
 
 		} catch (SQLException e) {
@@ -317,9 +317,29 @@ public class GuayaquilViewController extends HttpServlet {
 		
 	}
 
-	private void solicitarReservaGuayaquil(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		req.getRequestDispatcher("jsp/GYE/reservas/reservas.jsp").forward(req, resp);
+	private void solicitarReservaGuayaquil(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		try {
+			// Instanciar los DAOs correspondientes
+	        ClienteGuayaquilDAO clienteGDAO = new ClienteGuayaquilDAO();
+	        EmpleadoGuayaquilDAO empleadoGDAO = new EmpleadoGuayaquilDAO();
+	        ServicioGuayaquilDAO servicioGDAO = new ServicioGuayaquilDAO();
+	        
+	        // Obtener los clientes, empleados y servicios desde la base de datos
+	        List<Cliente> clientesGuayaquil = clienteGDAO.getClientesGuayaquil();
+	        List<Empleado> empleadosGuayaquil = empleadoGDAO.getEmpleadosGuayaquil();
+	        List<Servicio> serviciosGuayaquil = servicioGDAO.getServiciosGuayaquil();
+
+	        // Poner estos datos en el request para que estén disponibles en la JSP
+	        req.setAttribute("clientesGuayaquil", clientesGuayaquil);
+	        req.setAttribute("empleadosGuayaquil", empleadosGuayaquil);
+	        req.setAttribute("serviciosGuayaquil", serviciosGuayaquil);
+
+	        // Redirigir a la JSP para mostrar el formulario
+	        req.getRequestDispatcher("jsp/GYE/reservas/reservas.jsp").forward(req, resp);
+	    } catch (SQLException e) {
+	        e.printStackTrace();  // Manejo de excepciones, puedes personalizarlo más
+	        resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+	    }
 
 	}
 

@@ -71,9 +71,11 @@
 								<!-- Reemplázalo con el dato correcto si tienes una relación con mascotas -->
 								<td>${reserva.estado}</td>
 								<td>
-									<button class="action-btn modify-btn"
-										onclick="location.href='historialTabla.jsp?id=${reserva.idReserva}'">Modificar</button>
-									<button class="action-btn delete-btn">Eliminar</button>
+									<a
+							href="ReservaGuayaquilController?ruta=eliminarReserva&idReserva=${reserva.idReserva}"
+							class="action-btn delete-btn"
+							onclick="return confirm('¿Estás seguro de que quieres Cancelar esta Reserva?');">
+								Cancelar </a>
 								</td>
 							</tr>
 						</c:forEach>
