@@ -68,7 +68,6 @@ public class QuitoViewController extends HttpServlet {
 		case "solicitarDatosPrivadosQuito":
 			this.solicitarDatosPrivadosQuito(req, resp);
 			break;
-			
 		case "solicitarSucursales":
 			this.solicitarSucursales(req, resp);
 			break;

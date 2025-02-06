@@ -2,6 +2,9 @@ package controladores;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
+
+import com.google.gson.Gson;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -11,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import modelo.dao.EmpleadoGuayaquilDAO;
 import modelo.dao.MascotaGuayaquilDAO;
+import modelo.dao.MascotaQuitoDAO;
 import modelo.entidades.DatosPrivadosEmpleado;
 import modelo.entidades.Empleado;
 import modelo.entidades.Mascota;
@@ -51,10 +55,33 @@ public class MascotaGuayaquilController extends HttpServlet {
 		case "solicitarAgregarMascota":
 			this.solicitarAgregarMascota(req, resp);
 			break;
+		case "getMascotasPorCliente":
+			this.getMascotasPorCliente(req, resp);
+			break;
 
 		}
 	}
 
+	// Método en el controlador para obtener las mascotas por cliente
+		private void getMascotasPorCliente(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		    try {
+		        int idCliente = Integer.parseInt(req.getParameter("idCliente"));
+		        
+		        MascotaGuayaquilDAO mascotaDAO = new MascotaGuayaquilDAO();
+		        List<Mascota> mascotas = mascotaDAO.getMascotasPorCliente(idCliente);
+		        
+		        // Convertir la lista de mascotas a JSON
+		        String json = new Gson().toJson(mascotas);
+		        
+		        // Enviar la respuesta como JSON
+		        resp.setContentType("application/json");
+		        resp.getWriter().write(json);
+		    } catch (SQLException e) {
+		        e.printStackTrace();  // Manejo de excepciones
+		        resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		    }
+		}
+		
 	private void modificarMascota(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// Obtener los parámetros del formulario
