@@ -18,13 +18,35 @@
 			class="form-container">
 			<input type="hidden" name="cedula" value="${empleadoGuayaquil.cedula}">
 			<input type="hidden" name="idEmpleado"
-				value="${empleadoGuayaquil.idEmpleado}"> <label for="nombre">Nombre:</label>
+				value="${empleadoGuayaquil.idEmpleado}"> 
+			
+			<label for="nombre">Nombre:</label>
 			<input type="text" id="nombre" name="nombre"
-				value="${empleadoGuayaquil.nombre}" required> <label
-				for="telefono">Teléfono:</label> <input type="text" id="telefono"
-				name="telefono" value="${empleadoGuayaquil.telefono}" required> <label
-				for="Cargo">Cargo:</label> <input type="txt" id="cargo"
-				name="cargo" value="${empleadoGuayaquil.cargo}" required>
+				value="${empleadoGuayaquil.nombre}" required> 
+			
+			<label for="telefono">Teléfono:</label> 
+			<input type="text" id="telefono" name="telefono"
+				value="${empleadoGuayaquil.telefono}" required> 
+			
+			<label for="email">Email:</label> 
+			<input type="email" id="email" name="email" 
+				value="${empleadoPrivadoGuayaquil.email}" required> 
+			
+			<label for="direccion">Dirección:</label> 
+			<input type="text" id="direccion" name="direccion"
+				value="${empleadoPrivadoGuayaquil.direccion}" required> 
+			
+			<label for="cargo">Cargo:</label> 
+			<input type="text" id="cargo" name="cargo"
+				value="${empleadoGuayaquil.cargo}" required>
+			
+			<label for="salario">Salario:</label> 
+			<input type="number" id="salario" name="salario"
+				value="${empleadoPrivadoGuayaquil.salario}" required> 
+			
+			<label for="contrasena">Contraseña:</label> 
+			<input type="password" id="contrasena" name="contrasena"
+				value="${empleadoPrivadoGuayaquil.contrasena}" required> 
 
 			<button type="submit" class="action-btn modify-btn">Guardar
 				Cambios</button>

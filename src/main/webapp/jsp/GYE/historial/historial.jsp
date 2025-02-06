@@ -42,62 +42,45 @@
 			</nav>
         </aside>
 
-        <!-- Contenido Principal -->
-        <main class="content">
-            <div class="welcome-section">
-                <div class="search-container">
-                    <input type="text" placeholder="Buscar cliente" class="search-bar">
-                    <button class="search-btn">ð</button>
-                </div>
-                <table class="services-table">
-                    <thead>
-                        <tr>
-                            <th>Nro</th>
-                            <th>Fecha de la reserva</th>
-                            <th>Cliente</th>
-                            <th>Mascota</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>25/01/2025</td>
-                            <td>Mateo Robles</td>
-                            <td>Firulais</td>
-                            <td>Finalizado</td>
-                            <td>
-                                <button class="action-btn modify-btn" onclick="location.href='historialTabla.html'"">Modificar</button>
-                                <button class="action-btn delete-btn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>
-                                <button class="action-btn modify-btn">Modificar</button>
-                                <button class="action-btn delete-btn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>
-                                <button class="action-btn modify-btn">Modificar</button>
-                                <button class="action-btn delete-btn">Eliminar</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </main>
-    </div>
+		<!-- Contenido Principal -->
+		<main class="content">
+			<div class="welcome-section">
+				<div class="search-container">
+					<input type="text" placeholder="Buscar cliente" class="search-bar">
+					<button class="search-btn">ð</button>
+				</div>
+				<table class="services-table">
+					<thead>
+						<tr>
+							<th>Nro</th>
+							<th>Fecha de la reserva</th>
+							<th>Cliente</th>
+							<th>Mascota</th>
+							<th>Estado</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="reserva" items="${reservasGuayaquil}"
+							varStatus="status">
+							<tr>
+								<td>${status.index + 1}</td>
+								<td>${reserva.fechaReserva}</td>
+								<td>${reserva.idCliente}</td>
+								<td>Nombre Mascota</td>
+								<!-- Reemplázalo con el dato correcto si tienes una relación con mascotas -->
+								<td>${reserva.estado}</td>
+								<td>
+									<button class="action-btn modify-btn"
+										onclick="location.href='historialTabla.jsp?id=${reserva.idReserva}'">Modificar</button>
+									<button class="action-btn delete-btn">Eliminar</button>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</main>
+	</div>
 </body>
 </html>
