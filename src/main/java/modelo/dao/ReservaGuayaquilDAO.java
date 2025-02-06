@@ -15,7 +15,7 @@ public class ReservaGuayaquilDAO {
 
 	public List<Reserva> getReservas() throws SQLException {
         List<Reserva> reservas = new ArrayList<>();
-        String _SQL_GET_ALL = "SELECT idReserva, fechaReserva, estado, idCliente, idSucursal, idEmpleado FROM [LUZUJ\\MSSQLSERVER1].sucursalGuayaquil.dbo.VistaReserva";
+        String _SQL_GET_ALL = "SELECT idReserva, fechaReserva, estado, idCliente, idSucursal, idEmpleado FROM [LUZUJ\\MSSQLSERVER1].sucursalGuayaquil.dbo.ReservaGuayaquil";
 
         Connection conn = BddConnectionGuayaquil.getConexion();
         PreparedStatement pstmt = conn.prepareStatement(_SQL_GET_ALL);
