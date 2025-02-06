@@ -43,8 +43,7 @@
 				<a
 					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarDatosPrivadosQuito">Datos
 					Privados</a>
-				<a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarTablaSucursales">Sucursales</a>
+				
 			</nav>
 		</aside>
 
@@ -61,7 +60,7 @@
 							<th>Nro</th>
 							<th>Fecha de la reserva</th>
 							<th>Cliente</th>
-							<th>Mascota</th>
+							<th>Empleado</th>
 							<th>Estado</th>
 							<th>Acciones</th>
 						</tr>
@@ -73,7 +72,7 @@
 								<td>${status.index + 1}</td>
 								<td>${reserva.fechaReserva}</td>
 								<td>${reserva.idCliente}</td>
-								<td>Nombre Mascota</td>
+								<td>${reserva.idEmpleado}</td>
 								<!-- Reemplázalo con el dato correcto si tienes una relación con mascotas -->
 								<td>${reserva.estado}</td>
 								<td>

@@ -44,8 +44,7 @@
 				<a
 					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarDatosPrivadosQuito">Datos
 					Privados</a>
-				<a
-					href="${pageContext.request.contextPath}/QuitoViewController?ruta=solicitarTablaSucursales">Sucursales</a>
+			
 			</nav>
 		</aside>
 
