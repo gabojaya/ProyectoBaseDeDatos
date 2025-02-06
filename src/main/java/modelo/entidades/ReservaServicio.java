@@ -10,11 +10,13 @@ public class ReservaServicio implements Serializable{
 		
 	}
 
+	
 	private int idReserva;
 	private int idServicio;
-	private int idSucursal;
+	private String idSucursal;
 
-	public ReservaServicio(int idReserva, int idServicio, int idSucursal) {
+
+	public ReservaServicio(int idReserva, int idServicio, String idSucursal) {
 		super();
 		this.idReserva = idReserva;
 		this.idServicio = idServicio;
@@ -37,13 +39,15 @@ public class ReservaServicio implements Serializable{
 		this.idServicio = idServicio;
 	}
 
-	public int getIdSucursal() {
+	public String getIdSucursal() {
 		return idSucursal;
 	}
 
-	public void setIdSucursal(int idSucursal) {
+	public void setIdSucursal(String idSucursal) {
 		this.idSucursal = idSucursal;
 	}
+
+	
 	
 	
 }

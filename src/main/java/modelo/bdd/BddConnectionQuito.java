@@ -30,8 +30,12 @@ public class BddConnectionQuito {
     }
 
     public static Connection getConexion() {
-        if (conn == null) {
-            new BddConnectionQuito();
+    	try {
+            if (conn == null || conn.isClosed()) {
+                new BddConnectionQuito(); // Vuelve a inicializar la conexión
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return conn;
     }
@@ -66,4 +70,15 @@ public class BddConnectionQuito {
             }
         }
     }
+
+	public static void cerrar(Connection conn2) {
+		try {
+            if (conn2 != null) {
+            	conn2.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		
+	}
 }

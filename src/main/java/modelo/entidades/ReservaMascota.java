@@ -12,9 +12,11 @@ public class ReservaMascota implements Serializable{
 	
 	private int idReserva;
 	private int idMascota;
-	private int idSucursal;
+	private String idSucursal;
 
-	public ReservaMascota(int idReserva, int idMascota, int idSucursal) {
+	
+
+	public ReservaMascota(int idReserva, int idMascota, String idSucursal) {
 		super();
 		this.idReserva = idReserva;
 		this.idMascota = idMascota;
@@ -37,12 +39,13 @@ public class ReservaMascota implements Serializable{
 		this.idMascota = idMascota;
 	}
 
-	public int getIdSucursal() {
+	public String getIdSucursal() {
 		return idSucursal;
 	}
 
-	public void setIdSucursal(int idSucursal) {
+	public void setIdSucursal(String idSucursal) {
 		this.idSucursal = idSucursal;
 	}
+
 	
 }
