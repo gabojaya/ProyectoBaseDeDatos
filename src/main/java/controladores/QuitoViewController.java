@@ -362,7 +362,28 @@ public class QuitoViewController extends HttpServlet {
 	}
 
 	private void solicitarReservaQuito(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
-		req.getRequestDispatcher("jsp/UIO/reservas/reservas.jsp").forward(req, resp);
+		try {
+			// Instanciar los DAOs correspondientes
+	        ClienteQuitoDAO clienteQDAO = new ClienteQuitoDAO();
+	        EmpleadoQuitoDAO empleadoQDAO = new EmpleadoQuitoDAO();
+	        ServicioQuitoDAO servicioQDAO = new ServicioQuitoDAO();
+	        
+	        // Obtener los clientes, empleados y servicios desde la base de datos
+	        List<Cliente> clientesQuito = clienteQDAO.getClientesQuito();
+	        List<Empleado> empleadosQuito = empleadoQDAO.getEmpleadosQuito();
+	        List<Servicio> serviciosQuito = servicioQDAO.getServiciosQuito();
+
+	        // Poner estos datos en el request para que estén disponibles en la JSP
+	        req.setAttribute("clientesQuito", clientesQuito);
+	        req.setAttribute("empleadosQuito", empleadosQuito);
+	        req.setAttribute("serviciosQuito", serviciosQuito);
+
+	        // Redirigir a la JSP para mostrar el formulario
+	        req.getRequestDispatcher("jsp/UIO/reservas/reservas.jsp").forward(req, resp);
+	    } catch (SQLException e) {
+	        e.printStackTrace();  // Manejo de excepciones, puedes personalizarlo más
+	        resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+	    }
 		
 	}
 

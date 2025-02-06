@@ -12,17 +12,19 @@ public class Reserva implements Serializable{
 	private Date fechaReserva;
 	private String estado;
 	private int idCliente;
-	private String idSucursal;
 	private int idEmpleado;
+	private String idSucursal;
 
-	public Reserva(int idReserva, Date fechaReserva, String estado, int idCliente, String idSucursal, int idEmpleado) {
+	
+
+	public Reserva(int idReserva, Date fechaReserva, String estado, int idCliente, int idEmpleado, String idSucursal) {
 		super();
 		this.idReserva = idReserva;
 		this.fechaReserva = fechaReserva;
 		this.estado = estado;
 		this.idCliente = idCliente;
-		this.idSucursal = idSucursal;
 		this.idEmpleado = idEmpleado;
+		this.idSucursal = idSucursal;
 	}
 
 	public int getIdReserva() {

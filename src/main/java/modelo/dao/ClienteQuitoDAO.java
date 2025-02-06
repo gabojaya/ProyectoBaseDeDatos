@@ -19,7 +19,7 @@ public class ClienteQuitoDAO {
         List<Cliente> clientesG = new ArrayList<>();
 
         // Consulta SQL para obtener los clientes desde la base de datos remota
-        String _SQL_GET_ALL = "SELECT idCliente, cedula, nombre, telefono, email, idSucursal FROM [CASA].sucursalQuito.dbo.ClienteQuito";
+        String _SQL_GET_ALL = "SELECT idCliente, cedula, nombre, telefono, email, idSucursal FROM [ACERDERONNY].sucursalQuito.dbo.ClienteQuito";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = conn.prepareStatement(_SQL_GET_ALL);
@@ -49,7 +49,7 @@ public class ClienteQuitoDAO {
     public boolean insertClienteQuito(Cliente cliente) throws SQLException {
         boolean insertado = false;
 
-        String _SQL_INSERT = "INSERT INTO [CASA].sucursalQuito.dbo.ClienteQuito (idCliente, cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?, ?)";
+        String _SQL_INSERT = "INSERT INTO [ACERDERONNY].sucursalQuito.dbo.ClienteQuito (idCliente, cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?, ?)";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = null;
@@ -79,7 +79,7 @@ public class ClienteQuitoDAO {
         boolean insertado = false;
 
         // SQL para insertar en la vista VistaCliente
-        String _SQL_INSERT = "INSERT INTO [CASA].sucursalQuito.dbo.VistaCliente (cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?)";
+        String _SQL_INSERT = "INSERT INTO [ACERDERONNY].sucursalQuito.dbo.VistaCliente (cedula, nombre, telefono, email, idSucursal) VALUES (?, ?, ?, ?, ?)";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = null;
@@ -107,7 +107,7 @@ public class ClienteQuitoDAO {
     public Cliente getClienteById(int idCliente) throws SQLException {
         Cliente cliente = null;
 
-        String _SQL_GET_BY_ID = "SELECT idCliente, cedula, nombre, telefono, email, idSucursal FROM [CASA].sucursalQuito.dbo.ClienteQuito WHERE idCliente = ?";
+        String _SQL_GET_BY_ID = "SELECT idCliente, cedula, nombre, telefono, email, idSucursal FROM [ACERDERONNY].sucursalQuito.dbo.ClienteQuito WHERE idCliente = ?";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = null;
@@ -142,7 +142,7 @@ public class ClienteQuitoDAO {
     public boolean updateClienteDistribuido(Cliente cliente) throws SQLException {
         boolean actualizado = false;
 
-        String _SQL_UPDATE = "UPDATE [CASA].sucursalQuito.dbo.VistaCliente " +
+        String _SQL_UPDATE = "UPDATE [ACERDERONNY].sucursalQuito.dbo.VistaCliente " +
                              "SET nombre = ?, telefono = ?, email = ? " +
                              "WHERE idCliente = ?";
 
@@ -172,7 +172,7 @@ public class ClienteQuitoDAO {
     public boolean deleteClienteDistribuido(int idCliente) throws SQLException {
         boolean eliminado = false;
 
-        String _SQL_DELETE = "DELETE FROM [CASA].sucursalQuito.dbo.VistaCliente WHERE idCliente = ?";
+        String _SQL_DELETE = "DELETE FROM [ACERDERONNY].sucursalQuito.dbo.VistaCliente WHERE idCliente = ?";
 
         Connection conn = BddConnectionQuito.getConexion();
         PreparedStatement pstmt = null;
